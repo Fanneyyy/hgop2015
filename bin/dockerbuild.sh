@@ -1,21 +1,19 @@
 #!/bin/bash
 
 echo Cleaning...
-rm -rf ./dist
+rm -rf ./dist &&
 
-echo Building app
-grunt
-EXITCODE=$?;
-if [[ $EXITCODE != 0 ]];
-then exit $EXITCODE;
-else
-	cp ./Dockerfile ./dist/
+echo Building app &&
+grunt &&
 
-	cd dist
-	npm install --production
+cp ./Dockerfile ./dist/ &&
 
-	echo Building docker image
-	docker build -t fanneyyy/tictactoe .
+cd dist &&
+npm install --production &&
 
-	echo "Done"
-fi
+echo Building docker image &&
+docker build -t fanneyyy/tictactoe . &&
+
+echo "Done" &&
+
+EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
