@@ -5,13 +5,17 @@ rm -rf ./dist
 
 echo Building app
 grunt
+EXITCODE=$?;
+if [[ $EXITCODE != 0 ]];
+then exit $EXITCODE;
+else
+	cp ./Dockerfile ./dist/
 
-cp ./Dockerfile ./dist/
+	cd dist
+	npm install --production
 
-cd dist
-npm install --production
+	echo Building docker image
+	docker build -t fanneyyy/tictactoe .
 
-echo Building docker image
-docker build -t fanneyyy/tictactoe .
-
-echo "Done"
+	echo "Done"
+fi
