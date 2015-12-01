@@ -82,7 +82,13 @@ Kynnti mér Jenkins og skoðaði dæmi um verkefni þar sem Jenkins og docker er
 Klára að setja upp Jenkins og koma upp feedback kerfi fyrir Karma próf sem klikka. Byrja á uppsetningu Unit prófana.
 
 #### Vandamál
+Kom upp vandamál með grunt í Jenkins, fann lausn en á eftir að skoða það betur. 
+Svo voru scriptin mín ekki að skila Error kóða á réttum tíma þannig ég þurfti að breyta þeim en er ekki alveg ánægð með lausnina, þarf að skoða betur.
 
 #### Útkoma
+Náði að setja upp test fyrir commit stage og annað fyrir deployment stage í Jenkins. 
+Þau skila FAILURE ef eitthvað er brotið og skila annars SUCCESS.
+Náði ekki að byrja á Unit testunum.
 
 #### Lærdómur
+Búin að kynna mér vel Jenkins og skoða hvernig hægt er að nota það til að ná upp öruggri Continuous Integration. 
