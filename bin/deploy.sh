@@ -1,10 +1,5 @@
 #!/bin/bash
 
-echo Starting docker and pushing newest docker image
-sudo service docker start && 
-docker login --username=fanneyyy --password=$DOCKER_PASS --email=$DOCKER_EMAIL && 
-docker push fanneyyy/tictactoe
-
 echo Connecting to Test Environment
 echo Pulling newest docker image
 ssh vagrant@192.168.50.4 '
