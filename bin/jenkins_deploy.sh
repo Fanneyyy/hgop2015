@@ -2,4 +2,4 @@
 
 echo 'Jenkins deployment stage script'
 
-./deploy.sh
+./bin/deploy.sh
