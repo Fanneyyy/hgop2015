@@ -18,7 +18,7 @@ In essence I'm a happy, positive, easy-going person.
 I'm hardworking and passionate about learning new skills and I really love the field I'm studying 
 so I'm very excited about becoming an excellent computer scientist.
 
-## This course
+## This Course
 I decided to enroll in the course Practical Quality Assurance and Testing because I really enjoyed the prerequisite 
 Software Engineering. I also saw that we would be setting up a best practices workflow when developing
 a web application, including hopefully continuous delivery and a lot of testing that should ensure a good working environment
