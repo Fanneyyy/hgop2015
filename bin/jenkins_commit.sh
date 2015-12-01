@@ -12,9 +12,8 @@ bower install
 export DISPLAY=:0
 
 ./bin/dockerbuild.sh
-EXITCODE=$?; 
-if [[ $EXITCODE == 0 ]]; 
-then docker push fanneyyy/tictactoe; 
-fi
-
+EXITCODE=$?
+if [[ $EXITCODE == 0 ]]
+then docker push fanneyyy/tictactoe
 echo 'Finished pushing to docker'
+fi
