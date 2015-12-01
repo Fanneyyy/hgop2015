@@ -1,9 +1,11 @@
-#!/bin/bash -e
+#!/bin/bash
 
 echo Cleaning...
 rm -rf ./dist &&
 
 echo Building app &&
+npm install &&
+bower install &&
 grunt &&
 
 cp ./Dockerfile ./dist/ &&
