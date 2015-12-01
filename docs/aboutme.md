@@ -24,4 +24,4 @@ Software Engineering. I also saw that we would be setting up a best practices wo
 a web application, including hopefully continuous delivery and a lot of testing that should ensure a good working environment
 and a quality product. I am mostly excited about the development of the application, although I know that the application itself
 won't be a focus point in the course, I know that the working environment including the testing is extremely important
-and I want to adopt all these best practices before I start working since perhaps then I won't have time to.
+and I want to adopt all these best practices before I start working.
