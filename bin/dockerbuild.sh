@@ -3,9 +3,6 @@
 echo Cleaning...
 rm -rf ./dist
 
-jer
-EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
-
 echo Building app
 grunt
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
