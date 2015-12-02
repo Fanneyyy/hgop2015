@@ -47,6 +47,17 @@ module.exports = function(config) {
       stripPrefix: 'client/'
     },
 
+    // Karma-junit Reporter for jenkins
+    reporters: ['progress', 'junit'],
+
+    // the default configuration
+    junitReporter: {
+      outputDir: '', // results will be saved as $outputDir/$browserName.xml
+      outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile
+      suite: '', // suite will become the package name attribute in xml testsuite element
+      useBrowserName: true // add browser name to report and classes names
+    }
+
     // list of files / patterns to exclude
     exclude: [],
 
