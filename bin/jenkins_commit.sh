@@ -3,7 +3,7 @@
 echo 'Jenkins commit stage script'
 
 # problems with finding grunt
-export PATH=/usr/local/bin:/path/to/node:/path/to/node_bin:/path/to/phantomjs:/path/to/jscoverage:$PATH;
+export PATH=/usr/local/bin:$PATH;
 
 npm install
 bower install
