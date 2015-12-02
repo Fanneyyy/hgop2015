@@ -16,4 +16,5 @@ EXITCODE=$?
 if [[ $EXITCODE == 0 ]]
 then docker push fanneyyy/tictactoe
 echo 'Finished pushing to docker'
+else exit $EXITCODE
 fi

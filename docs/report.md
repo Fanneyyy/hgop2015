@@ -92,3 +92,14 @@ Náði ekki að byrja á Unit testunum.
 
 #### Lærdómur
 Búin að kynna mér vel Jenkins og skoða hvernig hægt er að nota það til að ná upp öruggri Continuous Integration. 
+
+## Dagur 5
+
+#### Markmið
+Koma upp feedback kerfi fyrir Karma próf sem klikka. Byrja á uppsetningu Unit prófana.
+
+#### Vandamál
+
+#### Útkoma
+
+#### Lærdómur
