@@ -14,7 +14,7 @@ npm install --production
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
 
 echo Building docker image
-sudo service docker start
+#sudo service docker start
 docker build -t fanneyyy/tictactoe .
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
 
