@@ -79,7 +79,7 @@ Kynnti mér Jenkins og skoðaði dæmi um verkefni þar sem Jenkins og docker er
 ### Dagur 4
 
 #### Markmið
-Klára að setja upp Jenkins og koma upp feedback kerfi fyrir Karma próf sem klikka. Byrja á uppsetningu Unit prófana.
+Klára að setja upp Jenkins og koma upp feedback kerfi fyrir Karma próf sem klikka. Byrja að skoða Unit próf.
 
 #### Vandamál
 Kom upp vandamál með grunt í Jenkins, fann lausn en á eftir að skoða það betur. 
@@ -96,7 +96,25 @@ Búin að kynna mér vel Jenkins og skoða hvernig hægt er að nota það til a
 ## Dagur 5
 
 #### Markmið
-Koma upp feedback kerfi fyrir Karma próf sem klikka. Byrja á uppsetningu Unit prófana.
+Koma upp feedback kerfi fyrir Karma próf og tengja það við Jenkins. Byrja á uppsetningu Unit prófana.
+
+#### Vandamál
+Þar sem Jenkins prófanirnar frá mér eru alltaf að sækja verkefnið af Github þá þurfti ég alltaf að pusha inná Github til að Jenkins gæti keyrt prófin.
+Þetta er frekar óhjálplegt þannig langar að breyta þessu, enda er líka frekar skrýtið að pusha inn breytingum til að athuga hvort þær virki rétt.
+
+#### Útkoma
+Setti upp report fyrir Commit stage í Jenkins sem virkar mjög flott fyrir Karma prófin.
+Byrjaði að skoða Unit próf.
+
+#### Lærdómur
+Skoðaði prófanirnar sem eru í boði í kringum AngularJS og hvernig hægt sé að tengja feedback frá þeim inní CI eins og Jenkins.
+
+## Dagur 6
+
+#### Markmið
+Fá Jenkins til að geta keyrt Commit Stage prófin á local git repo-inu ef ég vill.
+Setja upp Poll SCM í Jenkins þannig að Jenkins keyri reglulega ef kóðinn hefur breyst.
+Klára að gera lista yfir helstu Unit test og byrja að koma þeim upp.
 
 #### Vandamál
 
