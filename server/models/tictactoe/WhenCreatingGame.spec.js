@@ -10,14 +10,14 @@ describe('create game command', function() {
       command: "CreateGame",
       name: "FirstGameName",
       userName: "Fanney",
-      timeStap: "2015.12.03T14:32:00"
+      timeStamp: "2015.12.03T14:32:00"
     };
     then = [{
       id: "111",
       event: "GameCreated",
       name: "FirstGameName",
       userName: "Fanney",
-      timeStap: "2015.12.03T14:32:00"
+      timeStamp: "2015.12.03T14:32:00"
     }];
 
     var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
@@ -32,14 +32,14 @@ describe('create game command', function() {
       command: "CreateGame",
       name: "SecondGameName",
       userName: "Svavar",
-      timeStap: "2015.12.03T19:19:00"
+      timeStamp: "2015.12.03T19:19:00"
     };
     then = [{
       id: "222",
       event: "GameCreated",
       name: "SecondGameName",
       userName: "Svavar",
-      timeStap: "2015.12.03T19:19:00"
+      timeStamp: "2015.12.03T19:19:00"
     }];
 
     var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
