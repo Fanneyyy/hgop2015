@@ -112,12 +112,17 @@ Skoðaði prófanirnar sem eru í boði í kringum AngularJS og hvernig hægt s�
 ## Dagur 6
 
 #### Markmið
-Fá Jenkins til að geta keyrt Commit Stage prófin á local git repo-inu ef ég vill.
-Setja upp Poll SCM í Jenkins þannig að Jenkins keyri reglulega ef kóðinn hefur breyst.
-Klára að gera lista yfir helstu Unit test og byrja að koma þeim upp.
+Fá Jenkins til að geta keyrt Commit Stage prófin á local git repo-inu ef ég vill.  
+Setja upp Poll SCM í Jenkins þannig að Jenkins keyri reglulega ef kóðinn hefur breyst.  
+Klára að gera lista yfir helstu Unit test.  
+Byrja að forrita Unit test.
 
 #### Vandamál
 
 #### Útkoma
+Get núna sett up Jenkins verkefni sem keyrir á local repo.  
+Jenkins próf keyra núna á mesta lagi 15 mínútna fresti ef breytingar hafa verið gerðar.
+Kominn listi af dæmum fyrir Unit test.
 
 #### Lærdómur
+Skoðaði og æfði mig að gera prófanadæmi með modelinu Given-When-Then.
