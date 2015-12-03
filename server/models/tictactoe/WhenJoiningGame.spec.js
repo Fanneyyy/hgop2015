@@ -53,4 +53,34 @@ describe('join game command', function() {
 
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
+
+  it('should not join game that already has a second user', function() {
+    given = [{
+      id: "666",
+      event: "GameJoined",
+      name: "FifthGameName",
+      userName: "Maren",
+      creatorUserName: "Arni",
+      timeStamp: "2015.12.03T20:55:00"
+    }];
+    when = {
+      id: "777",
+      command: "JoinGame",
+      name: "FifthGameName",
+      userName: "Soffia",
+      timeStamp: "2015.12.03T20:56:00"
+    };
+    then = [{
+      id: "777",
+      event: "GameIsFull",
+      name: "FifthGameName",
+      userName: "Soffia",
+      timeStamp: "2015.12.03T20:56:00"
+    }];
+
+    var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });
 });
+

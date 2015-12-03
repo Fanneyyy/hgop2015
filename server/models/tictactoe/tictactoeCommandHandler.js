@@ -13,10 +13,19 @@ module.exports = function tictactoeCommandHandler(events) {
         }];
       }
       if (cmd.command === "JoinGame") {
-        if (gameCreatedEvent === undefined) {
+        if (!gameCreatedEvent) {
           return [{
             id: cmd.id,
             event: "GameDoesNotExist",
+            name: cmd.name,
+            userName: cmd.userName,
+            timeStamp: cmd.timeStamp
+          }];
+        }
+        if (gameCreatedEvent.creatorUserName) {
+          return [{
+            id: cmd.id,
+            event: "GameIsFull",
             name: cmd.name,
             userName: cmd.userName,
             timeStamp: cmd.timeStamp
