@@ -1,12 +1,12 @@
 module.exports = function tictactoeCommandHandler(events) {
   return {
-    executeCommand: function() {
+    executeCommand: function(cmd) {
       return [{
-        id: "111",
+        id: cmd.id,
         event: "GameCreated",
-        name: "FirstGameName",
-        userName: "Fanney",
-        timeStap: "2015.12.03T14:32:00"
+        name: cmd.name,
+        userName: cmd.userName,
+        timeStap: cmd.timeStap
       }];
     }
   };

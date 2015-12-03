@@ -24,4 +24,26 @@ describe('create game command', function() {
 
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
+
+  it('should create another game with different information', function() {
+    given = [];
+    when = {
+      id: "222",
+      command: "CreateGame",
+      name: "SecondGameName",
+      userName: "Svavar",
+      timeStap: "2015.12.03T19:19:00"
+    };
+    then = [{
+      id: "222",
+      event: "GameCreated",
+      name: "SecondGameName",
+      userName: "Svavar",
+      timeStap: "2015.12.03T19:19:00"
+    }];
+
+    var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });
 });
