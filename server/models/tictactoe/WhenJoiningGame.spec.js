@@ -22,8 +22,8 @@ describe('join game command', function() {
       id: "444",
       event: "GameJoined",
       name: "ThirdGameName",
-      userName: "Fanney",
-      secondUserName: "Svavar",
+      userName: "Svavar",
+      creatorUserName: "Fanney",
       timeStamp: "2015.12.03T19:34:00"
     }];
 
@@ -31,5 +31,26 @@ describe('join game command', function() {
 
     JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
   });
-});
 
+  it('should not join game that does not exist', function() {
+    given = [];
+    when = {
+      id: "555",
+      command: "JoinGame",
+      name: "FourthGameName",
+      userName: "Mani",
+      timeStamp: "2015.12.03T20:37:00"
+    };
+    then = [{
+      id: "555",
+      event: "GameDoesNotExist",
+      name: "FourthGameName",
+      userName: "Mani",
+      timeStamp: "2015.12.03T20:37:00"
+    }];
+
+    var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });
+});
