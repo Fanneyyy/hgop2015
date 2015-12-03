@@ -12,3 +12,6 @@ product backlog for the assignment.
 
 #### Project Report
 [A report outlining the day by day process of the assignment](./docs/report.md)
+
+#### Test Examples
+[The test examples using Given-When-Then model](./docs/testExamples.md)
