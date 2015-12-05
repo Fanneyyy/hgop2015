@@ -118,11 +118,14 @@ Klára að gera lista yfir helstu Unit test.
 Byrja að forrita Unit test.
 
 #### Vandamál
+Þarf að kynna mér aðeins betur JavaScript en allt að koma.
 
 #### Útkoma
 Get núna sett up Jenkins verkefni sem keyrir á local repo.  
 Jenkins próf keyra núna á mesta lagi 15 mínútna fresti ef breytingar hafa verið gerðar.
 Kominn listi af dæmum fyrir Unit test. [The test examples using Given-When-Then model](./docs/testExamples.md).
+Búin að gera nokkur Unit test sem ganga vel.
 
 #### Lærdómur
 Skoðaði og æfði mig að gera prófanadæmi með modelinu Given-When-Then.
+Búin að kynna mér prófana möguleikana með grunt sem líta mjög vel út.
