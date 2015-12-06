@@ -16,20 +16,63 @@ describe('making a play command', function() {
       id: "888",
       command: "MakeMove",
       userName: "Anna",
-      x:1,
-      y:1,
+      x: 1,
+      y: 1,
       side:'X',
       timeStamp: "2015.12.04T21:45:00"
     };
     then = [{
-      id:"888",
-      event:"MoveMade",
-      userName:"Anna",
-      name:"TheFirstGame",
-      x:1,
-      y:1,
-      side:'X',
+      id: "888",
+      event: "MoveMade",
+      userName: "Anna",
+      name: "SixthGameName",
+      x: 1,
+      y: 1,
+      side: 'X',
       timeStamp: "2015.12.04T21:45:00"
+    }];
+
+    var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+    JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+  });
+
+  it('making a play on a non-empty box should be illegal', function() {
+    given = [{
+      id: "888",
+      event: "GameJoined",
+      name: "SixthGameName",
+      userName: "Anna",
+      creatorUserName: "Halldor",
+      timeStamp: "2015.12.04T21:31:00"
+    },{
+      id: "888",
+      event: "MoveMade",
+      userName: "Anna",
+      name: "SixthGameName",
+      x: 1,
+      y: 1,
+      side: 'X',
+      timeStamp: "2015.12.04T21:45:00"
+    }];
+    when = {
+      id: "888",
+      command: "MakeMove",
+      userName: "Halldor",
+      x: 1,
+      y: 1,
+      side: 'O',
+      timeStamp: "2015.12.04T22:13:00"
+    };
+    then = [{
+      id: "888",
+      event: "IllegalMove",
+      userName: "Halldor",
+      name: "SixthGameName",
+      x: 1,
+      y: 1,
+      side: 'O',
+      timeStamp: "2015.12.04T22:13:00"
     }];
 
     var actualEvents = tictactoeCommandHandler(given).executeCommand(when);

@@ -1,5 +1,23 @@
+var utils = require('lodash');
+
 module.exports = function tictactoeCommandHandler(events) {
-  var gameCreatedEvent = events[0];
+  var gameState = {
+    gameCreatedEvent: events[0],
+    gameBoard: [['','',''],['','',''],['','','']]
+  };
+
+  var eventHandlers = {
+    "MoveMade": function(event) {
+      gameState.gameBoard[event.x][event.y] = event.side;
+    }
+  };
+
+  utils.each(events, function(event) {
+    var eventFound = eventHandlers[event.event];
+    if (eventFound) {
+      eventFound(event);
+    }
+  });
 
   var handlers = {
     "CreateGame": function(cmd) {
@@ -14,7 +32,7 @@ module.exports = function tictactoeCommandHandler(events) {
       }
     },
     "JoinGame": function(cmd) {
-      if (!gameCreatedEvent) {
+      if (!gameState.gameCreatedEvent) {
         return [{
           id: cmd.id,
           event: "GameDoesNotExist",
@@ -23,7 +41,7 @@ module.exports = function tictactoeCommandHandler(events) {
           timeStamp: cmd.timeStamp
         }];
       }
-      if (gameCreatedEvent.creatorUserName) {
+      if (gameState.gameCreatedEvent.creatorUserName) {
         return [{
           id: cmd.id,
           event: "GameIsFull",
@@ -37,23 +55,35 @@ module.exports = function tictactoeCommandHandler(events) {
         event: "GameJoined",
         name: cmd.name,
         userName: cmd.userName,
-        creatorUserName: gameCreatedEvent.userName,
+        creatorUserName: gameState.gameCreatedEvent.userName,
         timeStamp: cmd.timeStamp
       }];
     },
     "MakeMove": function(cmd) {
+      if (gameState.gameBoard[cmd.x][cmd.y] !== '') {
+        return [{
+          id: cmd.id,
+          event: "IllegalMove",
+          userName: cmd.userName,
+          name: gameState.gameCreatedEvent.name,
+          x: cmd.x,
+          y: cmd.y,
+          side: cmd.side,
+          timeStamp: cmd.timeStamp
+        }];
+      }
       return [{
-        id:"888",
-        event:"MoveMade",
-        userName:"Anna",
-        name:"TheFirstGame",
-        x:1,
-        y:1,
-        side:'X',
-        timeStamp: "2015.12.04T21:45:00"
+        id: cmd.id,
+        event: "MoveMade",
+        userName: cmd.userName,
+        name: gameState.gameCreatedEvent.name,
+        x: cmd.x,
+        y: cmd.y,
+        side: cmd.side,
+        timeStamp: cmd.timeStamp
       }];
     }
-  }
+  };
 
   return {
     executeCommand: function(cmd) {
