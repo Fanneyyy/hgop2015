@@ -129,3 +129,17 @@ Búin að gera nokkur Unit test sem ganga vel.
 #### Lærdómur
 Skoðaði og æfði mig að gera prófanadæmi með modelinu Given-When-Then.
 Búin að kynna mér prófana möguleikana með grunt sem líta mjög vel út.
+
+
+## Dagur 7
+
+#### Markmið
+
+
+#### Vandamál
+
+
+#### Útkoma
+
+
+#### Lærdómur
