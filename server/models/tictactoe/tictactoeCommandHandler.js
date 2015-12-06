@@ -60,12 +60,12 @@ module.exports = function tictactoeCommandHandler(events) {
       }];
     },
     "MakeMove": function(cmd) {
-      if (gameState.gameBoard[cmd.x][cmd.y] !== '') {
+      if (gameState.gameBoard[cmd.x][cmd.y] === '') {
         return [{
           id: cmd.id,
-          event: "IllegalMove",
-          userName: cmd.userName,
+          event: "MoveMade",
           name: gameState.gameCreatedEvent.name,
+          userName: cmd.userName,
           x: cmd.x,
           y: cmd.y,
           side: cmd.side,
@@ -74,9 +74,9 @@ module.exports = function tictactoeCommandHandler(events) {
       }
       return [{
         id: cmd.id,
-        event: "MoveMade",
-        userName: cmd.userName,
+        event: "IllegalMove",
         name: gameState.gameCreatedEvent.name,
+        userName: cmd.userName,
         x: cmd.x,
         y: cmd.y,
         side: cmd.side,
