@@ -7,6 +7,6 @@ module.exports = {
   mongo: {
     uri: 'mongodb://localhost/tictactoe-dev'
   },
-
+  event_storage: '/event_storage/memory_storage/memoryStore',
   seedDB: true
 };
