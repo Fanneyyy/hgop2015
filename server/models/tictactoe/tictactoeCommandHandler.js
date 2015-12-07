@@ -12,6 +12,17 @@ module.exports = function tictactoeCommandHandler(events) {
     }
   };
 
+  var gameLogic = {
+    "RowWon": function(x, y, side) {
+      for (var i = 0; i < 3; i++) {
+        if (y !== i && gameState.gameBoard[x][i] !== side) {
+          return false;
+        }
+      }
+      return true;
+    }
+  }
+
   utils.each(events, function(event) {
     var eventFound = eventHandlers[event.event];
     if (eventFound) {
@@ -61,6 +72,16 @@ module.exports = function tictactoeCommandHandler(events) {
     },
     "MakeMove": function(cmd) {
       if (gameState.gameBoard[cmd.x][cmd.y] === '') {
+        if (gameLogic.RowWon(cmd.x, cmd.y, cmd.side)) {
+          return [{
+            id: cmd.id,
+            event: "GameWon",
+            name: gameState.gameCreatedEvent.name,
+            userName: cmd.userName,
+            side: cmd.side,
+            timeStamp: cmd.timeStamp
+          }];
+        }
         return [{
           id: cmd.id,
           event: "MoveMade",

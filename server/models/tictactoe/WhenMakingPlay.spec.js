@@ -5,6 +5,12 @@ describe('making a play command', function() {
 
   it('should make a play on a new game', function() {
     given = [{
+      id: "898",
+      event: "GameCreated",
+      name: "SixthGameName",
+      userName: "Halldor",
+      timeStamp: "2015.12.04T20:50:00"
+    },{
       id: "888",
       event: "GameJoined",
       name: "SixthGameName",
@@ -39,6 +45,12 @@ describe('making a play command', function() {
 
   it('making a play on a non-empty box should be illegal', function() {
     given = [{
+      id: "898",
+      event: "GameCreated",
+      name: "SixthGameName",
+      userName: "Halldor",
+      timeStamp: "2015.12.04T20:50:00"
+    },{
       id: "888",
       event: "GameJoined",
       name: "SixthGameName",
@@ -82,21 +94,18 @@ describe('making a play command', function() {
 
   it('making a play on a box that is out of bounds should be illegal', function() {
     given = [{
+      id: "898",
+      event: "GameCreated",
+      name: "SeventhGameName",
+      userName: "Siggi",
+      timeStamp: "2015.12.04T22:50:00"
+    },{
       id: "999",
       event: "GameJoined",
       name: "SeventhGameName",
       userName: "Elva",
       creatorUserName: "Siggi",
       timeStamp: "2015.12.04T23:01:00"
-    },{
-      id: "999",
-      event: "GameJoined",
-      name: "SeventhGameName",
-      userName: "Elva",
-      x: 2,
-      y: 1,
-      side: 'X',
-      timeStamp: "2015.12.04T23:03:00"
     }];
     when = {
       id: "999",
