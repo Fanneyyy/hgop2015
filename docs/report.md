@@ -134,12 +134,19 @@ Búin að kynna mér prófana möguleikana með grunt sem líta mjög vel út.
 ## Dagur 7
 
 #### Markmið
-
+Klára að setja upp Unit testin sem voru sett fram í [test examples](./docs/testExamples.md) 
+fyrir TicTacToe Command Handlerinn. Kynna mér 'q' og byrja að tengja serverinn og command handlerinn.
 
 #### Vandamál
 
 
 #### Útkoma
-
+Öll fyrrum skipulögð Unit test klár en þau munu að sjálfsögðu vera uppfærð ef það þarf
+að gera einhverjar breytingar á kóðanum.
 
 #### Lærdómur
+Tekur smá tíma að venjast því að nota TDD, sérstaklega í Javascript, en tók strax eftir hvað þetta er 
+rosalega þægilegt til að ná upp trausti á því sem maður er að gera og einstaklega þægilegt 
+að geta refactor-að kóðan og geta alltaf fylgst með testunum til að vita ef eitthvað klikkar.
+Skoðaði 'q', [þessi grein var með gott yfirlit](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/).
+
