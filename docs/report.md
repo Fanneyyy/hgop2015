@@ -138,7 +138,7 @@ Klára að setja upp Unit testin sem voru sett fram í [test examples](./docs/te
 fyrir TicTacToe Command Handlerinn. Kynna mér 'q' og byrja að tengja serverinn og command handlerinn.
 
 #### Vandamál
-
+Í byrjun þá fundu testin ekki jsmockito fyrir mock testin, ?
 
 #### Útkoma
 Öll fyrrum skipulögð Unit test klár en þau munu að sjálfsögðu vera uppfærð ef það þarf
