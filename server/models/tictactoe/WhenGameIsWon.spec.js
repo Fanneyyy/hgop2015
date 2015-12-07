@@ -95,4 +95,30 @@ describe('winning a game', function() {
       JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
     })
   });
+
+  describe('on a diagonal line', function() {
+    it('should win game', function() {
+      when = {
+        id: "888",
+        command: "MakeMove",
+        userName: "Anna",
+        x: 2,
+        y: 2,
+        side:'X',
+        timeStamp: "2015.12.04T23:52:00"
+      };
+      then = [{
+        id: "888",
+        event: "GameWon",
+        name: "SixthGameName",
+        userName: "Anna",
+        side: 'X',
+        timeStamp: "2015.12.04T23:52:00"
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+    })
+  });
 });

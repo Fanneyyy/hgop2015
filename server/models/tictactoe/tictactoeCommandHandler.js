@@ -16,8 +16,8 @@ module.exports = function tictactoeCommandHandler(events) {
     "RowWon": function(x, y, side) {
       gameState.gameBoard[x][y] = side;
       if (gameState.gameBoard[x][0] === side
-        && gameState.gameBoard[x][1] === side
-        && gameState.gameBoard[x][2] === side) {
+          && gameState.gameBoard[x][1] === side
+          && gameState.gameBoard[x][2] === side) {
         return true;
       }
       return false;
@@ -25,9 +25,23 @@ module.exports = function tictactoeCommandHandler(events) {
     "ColumnWon": function(x, y, side) {
       gameState.gameBoard[x][y] = side;
       if (gameState.gameBoard[0][y] === side
-        && gameState.gameBoard[1][y] === side
-        && gameState.gameBoard[2][y] === side) {
+          && gameState.gameBoard[1][y] === side
+          && gameState.gameBoard[2][y] === side) {
         return true;
+      }
+      return false;
+    },
+    "DiagonalWon": function(x, y, side) {
+      gameState.gameBoard[x][y] = side;
+      if (gameState.gameBoard[1][1] === side) {
+        if (gameState.gameBoard[0][0] === side
+            && gameState.gameBoard[2][2] === side) {
+          return true;
+        }
+        if (gameState.gameBoard[0][2] === side
+            && gameState.gameBoard[2][0] === side) {
+          return true;
+        }
       }
       return false;
     }
@@ -83,7 +97,8 @@ module.exports = function tictactoeCommandHandler(events) {
     "MakeMove": function(cmd) {
       if (gameState.gameBoard[cmd.x][cmd.y] === '') {
         if (gameLogic.RowWon(cmd.x, cmd.y, cmd.side)
-          || gameLogic.ColumnWon(cmd.x, cmd.y, cmd.side)) {
+          || gameLogic.ColumnWon(cmd.x, cmd.y, cmd.side)
+          || gameLogic.DiagonalWon(cmd.x, cmd.y, cmd.side)) {
           return [{
             id: cmd.id,
             event: "GameWon",
