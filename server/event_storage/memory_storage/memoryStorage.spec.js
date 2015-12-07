@@ -18,11 +18,23 @@ describe('in memory storage', function() {
 
     var localStorage = inMemoryStorage();
 
-    localStorage.loadEvents('1234', [{"id":"1"}]).then(function() {
+    localStorage.storeEvents('1234', [{"id":"1"}]).then(function() {
       localStorage.loadEvents('1234').then(function(loadedEvents) {
         should(loadedEvents).eql([{"id":"1"}]);
       });
     });
 
+  });
+
+  it('should append stored events to events previously stored',function(){
+    var localStorage = inMemoryStorage();
+
+    localStorage.storeEvents('1234', [{"id":"1"}]).then(function(){
+      localStorage.storeEvents('1234', [{"id":"2"}]).then(function(){
+        localStorage.loadEvents('1234').then(function(loadedEvents){
+          should(loadedEvents).eql([{"id":"1"},{"id":"2"}]);
+        });
+      });
+    });
   });
 });
