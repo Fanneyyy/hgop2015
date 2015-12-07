@@ -14,7 +14,6 @@ module.exports = function tictactoeCommandHandler(events) {
 
   var gameLogic = {
     "RowWon": function(x, y, side) {
-      gameState.gameBoard[x][y] = side;
       if (gameState.gameBoard[x][0] === side
           && gameState.gameBoard[x][1] === side
           && gameState.gameBoard[x][2] === side) {
@@ -23,7 +22,6 @@ module.exports = function tictactoeCommandHandler(events) {
       return false;
     },
     "ColumnWon": function(x, y, side) {
-      gameState.gameBoard[x][y] = side;
       if (gameState.gameBoard[0][y] === side
           && gameState.gameBoard[1][y] === side
           && gameState.gameBoard[2][y] === side) {
@@ -32,7 +30,6 @@ module.exports = function tictactoeCommandHandler(events) {
       return false;
     },
     "DiagonalWon": function(x, y, side) {
-      gameState.gameBoard[x][y] = side;
       if (gameState.gameBoard[1][1] === side) {
         if (gameState.gameBoard[0][0] === side
             && gameState.gameBoard[2][2] === side) {
@@ -44,6 +41,16 @@ module.exports = function tictactoeCommandHandler(events) {
         }
       }
       return false;
+    },
+    "GameDraw": function() {
+      for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+          if (gameState.gameBoard[i][j] === '') {
+            return false;
+          }
+        }
+      }
+      return true;
     }
   };
 
@@ -96,6 +103,7 @@ module.exports = function tictactoeCommandHandler(events) {
     },
     "MakeMove": function(cmd) {
       if (gameState.gameBoard[cmd.x][cmd.y] === '') {
+        gameState.gameBoard[cmd.x][cmd.y] = cmd.side;
         if (gameLogic.RowWon(cmd.x, cmd.y, cmd.side)
           || gameLogic.ColumnWon(cmd.x, cmd.y, cmd.side)
           || gameLogic.DiagonalWon(cmd.x, cmd.y, cmd.side)) {
@@ -105,6 +113,14 @@ module.exports = function tictactoeCommandHandler(events) {
             name: gameState.gameCreatedEvent.name,
             userName: cmd.userName,
             side: cmd.side,
+            timeStamp: cmd.timeStamp
+          }];
+        }
+        if (gameLogic.GameDraw()) {
+          return [{
+            id: cmd.id,
+            event: "GameDraw",
+            name: gameState.gameCreatedEvent.name,
             timeStamp: cmd.timeStamp
           }];
         }
