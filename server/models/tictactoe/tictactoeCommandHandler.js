@@ -14,14 +14,24 @@ module.exports = function tictactoeCommandHandler(events) {
 
   var gameLogic = {
     "RowWon": function(x, y, side) {
-      for (var i = 0; i < 3; i++) {
-        if (y !== i && gameState.gameBoard[x][i] !== side) {
-          return false;
-        }
+      gameState.gameBoard[x][y] = side;
+      if (gameState.gameBoard[x][0] === side
+        && gameState.gameBoard[x][1] === side
+        && gameState.gameBoard[x][2] === side) {
+        return true;
       }
-      return true;
+      return false;
+    },
+    "ColumnWon": function(x, y, side) {
+      gameState.gameBoard[x][y] = side;
+      if (gameState.gameBoard[0][y] === side
+        && gameState.gameBoard[1][y] === side
+        && gameState.gameBoard[2][y] === side) {
+        return true;
+      }
+      return false;
     }
-  }
+  };
 
   utils.each(events, function(event) {
     var eventFound = eventHandlers[event.event];
@@ -72,7 +82,8 @@ module.exports = function tictactoeCommandHandler(events) {
     },
     "MakeMove": function(cmd) {
       if (gameState.gameBoard[cmd.x][cmd.y] === '') {
-        if (gameLogic.RowWon(cmd.x, cmd.y, cmd.side)) {
+        if (gameLogic.RowWon(cmd.x, cmd.y, cmd.side)
+          || gameLogic.ColumnWon(cmd.x, cmd.y, cmd.side)) {
           return [{
             id: cmd.id,
             event: "GameWon",
