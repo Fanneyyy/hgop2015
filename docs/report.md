@@ -138,15 +138,27 @@ Klára að setja upp Unit testin sem voru sett fram í [test examples](./docs/te
 fyrir TicTacToe Command Handlerinn. Kynna mér 'q' og byrja að tengja serverinn og command handlerinn.
 
 #### Vandamál
-Í byrjun þá fundu testin ekki jsmockito fyrir mock testin, ?
+Í byrjun þá fundu testin ekki jsmockito fyrir mock testin, en gleymdi bara að bæta því við í package.json.
 
 #### Útkoma
 Öll fyrrum skipulögð Unit test klár en þau munu að sjálfsögðu vera uppfærð ef það þarf
-að gera einhverjar breytingar á kóðanum.
+að gera einhverjar breytingar á kóðanum. Tenging kominn milli storage og server. Búinn að setja inn unit test
+og logic fyrir event/memory storage og tengingu á milli.
 
 #### Lærdómur
 Tekur smá tíma að venjast því að nota TDD, sérstaklega í Javascript, en tók strax eftir hvað þetta er 
 rosalega þægilegt til að ná upp trausti á því sem maður er að gera og einstaklega þægilegt 
 að geta refactor-að kóðan og geta alltaf fylgst með testunum til að vita ef eitthvað klikkar.
 Skoðaði 'q', [þessi grein var með gott yfirlit](https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/).
+
+## Dagur 8
+
+#### Markmið
+Koma upp acceptance testum, tengja við Jenkins og nota fluid test API approach.
+
+#### Vandamál
+
+#### Útkoma
+
+#### Lærdómur
 
