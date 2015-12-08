@@ -9,4 +9,6 @@ ssh vagrant@192.168.50.4 '
 	docker kill $CONTAINER_ID
 	fi && 
 	docker pull fanneyyy/tictactoe && 
-	docker run -p 8080:8080 -d -e "NODE_ENV=production" fanneyyy/tictactoe)'
+	docker run -p 8080:8080 -d -e "NODE_ENV=production" fanneyyy/tictactoe)
+	export ACCEPTANCE_URL=http://192.168.50.4:8080
+	grunt mochaTest:acceptance'
