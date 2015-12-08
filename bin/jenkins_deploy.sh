@@ -16,4 +16,3 @@ EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
 
 grunt mochaTest:acceptance
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
-mv 'acceptance-tests' ./dist/
