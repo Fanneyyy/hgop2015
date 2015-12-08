@@ -10,3 +10,4 @@ ssh vagrant@192.168.50.4 '
 	fi && 
 	docker pull fanneyyy/tictactoe && 
 	docker run -p 8080:8080 -d -e "NODE_ENV=production" fanneyyy/tictactoe)'
+EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi

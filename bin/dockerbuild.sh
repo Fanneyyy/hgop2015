@@ -12,8 +12,8 @@ EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
 
 cp ./Dockerfile ./dist/
 mv 'TESTS-Firefox_38.0.0_(Linux_0.0.0).xml' ./dist/
-mv 'acceptance-tests' ./dist/
 mv 'server-tests' ./dist/
+EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
 
 cd dist
 npm install --production
