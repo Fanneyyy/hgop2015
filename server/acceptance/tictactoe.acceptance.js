@@ -49,12 +49,68 @@ describe('TEST ENV GET /api/gameHistory', function() {
       });
   });
 
-  it('Should execute fluid API test', function (done) {
-    /*
-     given(user("YourUser").createsGame("TheFirstGame"))
-     .expect("GameCreated").withName("TheFirstGame").isOk(done);
-     */
-    done();
+  it('Should execute fluid API test for create game', function (done) {
+    given({
+      id : "1234",
+      gameId : "999",
+      command: "CreateGame",
+      userName: "Fanney",
+      name: "TheFirstGame",
+      timeStamp: "2015-12-07T18:09:29"
+    })
+      .sendTo('/api/createGame')
+      .expect([{
+        "id": "1234",
+        "gameId": "999",
+        "event": "GameCreated",
+        "userName": "Fanney",
+        "name": "TheFirstGame",
+        "timeStamp": "2015-12-07T18:09:29"
+      }])
+      .when(done);
   });
-
 });
+
+function given(event) {
+  var cmd = {
+    object: event,
+    destination: undefined
+  };
+
+  var expectations = [];
+
+  var givenApi = {
+
+    sendTo: function (dest) {
+      cmd.destination = dest;
+      return givenApi;
+    },
+
+    expect: function (eventName) {
+      expectations.push(eventName);
+      return givenApi;
+    },
+    //and: givenApi.expect,
+    when: function (done) {
+      var req = request(acceptanceUrl);
+      req
+        .post(cmd.destination)
+        .type('json')
+        .send(cmd.object)
+        .end(function (err, res) {
+          if (err) return done(err);
+          request(acceptanceUrl)
+            .get('/api/gameHistory/' + cmd.object.gameId)
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end(function (err, res) {
+              if (err) return done(err);
+              res.body.should.be.instanceof(Array);
+              should(res.body).eql(expectations);
+            });
+          done();
+        });
+    }
+  };
+  return givenApi;
+}
