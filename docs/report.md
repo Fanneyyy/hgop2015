@@ -157,8 +157,12 @@ Skoðaði 'q', [þessi grein var með gott yfirlit](https://strongloop.com/stron
 Koma upp acceptance testum, tengja við Jenkins og nota fluid test API approach.
 
 #### Vandamál
+Var ekki viss hvað ég ætti að gera við .and partinn í API-inu mínu fyrir acceptance testin
+þannig ég geymdi það.
 
 #### Útkoma
+Kominn acceptance test fyrir Create Game. Bæði manual próf og svo með fluid API.
+Búin að setja upp build pipeline í Jenkins sem virkar mjög vel og skemmtilega :)
 
 #### Lærdómur
-
+Kynnti mér acceptance testing fyrir node js.
