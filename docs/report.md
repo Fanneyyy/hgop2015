@@ -166,3 +166,20 @@ Búin að setja upp build pipeline í Jenkins sem virkar mjög vel og skemmtileg
 
 #### Lærdómur
 Kynnti mér acceptance testing fyrir node js.
+
+## Dagur 9
+
+#### Markmið
+Breyta fluid acceptance testinu þannig að það sé á forminu  
+given(user("YourUser").createsGame("TheFirstGame"))
+.expect("GameCreated").withName("TheFirstGame").isOk(done);  
+og gera fleiri fluid api test.
+
+#### Vandamál
+
+#### Útkoma
+Búin að setja upp fluid API test sem virkar á forminu  
+given(user("YourUser").createsGame("TheFirstGame"))
+.expect("GameCreated").withName("TheFirstGame").isOk(done);  
+
+#### Lærdómur

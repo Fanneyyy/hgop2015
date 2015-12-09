@@ -8,3 +8,4 @@ dist
 .DS_Store
 bin/test.sh
 acceptance-tests
+server-tests

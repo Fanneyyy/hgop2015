@@ -7,5 +7,3 @@ vagrant ssh -c '
 	fi)'
 export ACCEPTANCE_URL=http://192.168.50.4:8080
 grunt mochaTest:acceptance
-cd ..
-mv 'acceptance-tests' ./dist/
