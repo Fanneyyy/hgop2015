@@ -50,67 +50,73 @@ describe('TEST ENV GET /api/gameHistory', function() {
   });
 
   it('Should execute fluid API test for create game', function (done) {
-    given({
-      id : "1234",
-      gameId : "999",
-      command: "CreateGame",
-      userName: "Fanney",
-      name: "TheFirstGame",
-      timeStamp: "2015-12-07T18:09:29"
-    })
-      .sendTo('/api/createGame')
-      .expect([{
-        "id": "1234",
-        "gameId": "999",
-        "event": "GameCreated",
-        "userName": "Fanney",
-        "name": "TheFirstGame",
-        "timeStamp": "2015-12-07T18:09:29"
-      }])
-      .when(done);
+    given(
+      user("YourUser")
+        .createsGame("TheFirstGame")
+    )
+      .expect("GameCreated")
+      .withName("TheFirstGame")
+      .isOk(done);
   });
 });
 
-function given(event) {
+function given(cmdName) {
   var cmd = {
-    object: event,
-    destination: undefined
+    commandName: cmdName,
+    destination: '/api/createGame'
   };
+  delete cmd.commandName.createsGame;
 
   var expectations = [];
 
   var givenApi = {
 
-    sendTo: function (dest) {
-      cmd.destination = dest;
-      return givenApi;
-    },
-
     expect: function (eventName) {
-      expectations.push(eventName);
+      expectations.push({event:eventName});
       return givenApi;
     },
-    //and: givenApi.expect,
-    when: function (done) {
+    withName: function (gameName) {
+      expectations.push({name:gameName});
+      return givenApi;
+    },
+    isOk: function (done) {
       var req = request(acceptanceUrl);
       req
         .post(cmd.destination)
         .type('json')
-        .send(cmd.object)
+        .send(cmd.commandName)
         .end(function (err, res) {
           if (err) return done(err);
           request(acceptanceUrl)
-            .get('/api/gameHistory/' + cmd.object.gameId)
+            .get('/api/gameHistory/' + cmd.commandName.gameId)
             .expect(200)
             .expect('Content-Type', /json/)
             .end(function (err, res) {
               if (err) return done(err);
               res.body.should.be.instanceof(Array);
-              should(res.body).eql(expectations);
+              should(res.body.event).eql(expectations.event);
+              should(res.body.name).eql(expectations.name);
+              done();
             });
-          done();
         });
     }
   };
   return givenApi;
+}
+
+function user(person) {
+  var user = {
+    id: "1234",
+    gameId: "999",
+    userName: person,
+    name: undefined,
+    command: undefined,
+    timeStamp: new Date(),
+    createsGame: function(gameName) {
+      user.name = gameName;
+      user.command = "CreateGame";
+      return user;
+    }
+  };
+  return user;
 }
