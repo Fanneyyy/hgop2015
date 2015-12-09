@@ -6,6 +6,7 @@ describe('join game command', function() {
   it('should join game', function() {
     given = [{
       id: "333",
+      gameId: "555",
       event: "GameCreated",
       name: "ThirdGameName",
       userName: "Fanney",
@@ -13,6 +14,7 @@ describe('join game command', function() {
     }];
     when = {
       id: "444",
+      gameId: "555",
       command: "JoinGame",
       name: "ThirdGameName",
       userName: "Svavar",
@@ -20,6 +22,7 @@ describe('join game command', function() {
     };
     then = [{
       id: "444",
+      gameId: "555",
       event: "GameJoined",
       name: "ThirdGameName",
       userName: "Svavar",
@@ -36,6 +39,7 @@ describe('join game command', function() {
     given = [];
     when = {
       id: "555",
+      gameId: "555",
       command: "JoinGame",
       name: "FourthGameName",
       userName: "Mani",
@@ -43,6 +47,7 @@ describe('join game command', function() {
     };
     then = [{
       id: "555",
+      gameId: "555",
       event: "GameDoesNotExist",
       name: "FourthGameName",
       userName: "Mani",
@@ -57,6 +62,7 @@ describe('join game command', function() {
   it('should not join game that already has a second user', function() {
     given = [{
       id: "777",
+      gameId: "555",
       event: "GameJoined",
       name: "FifthGameName",
       userName: "Maren",
@@ -65,6 +71,7 @@ describe('join game command', function() {
     }];
     when = {
       id: "888",
+      gameId: "555",
       command: "JoinGame",
       name: "FifthGameName",
       userName: "Soffia",
@@ -72,6 +79,7 @@ describe('join game command', function() {
     };
     then = [{
       id: "888",
+      gameId: "555",
       event: "GameIsFull",
       name: "FifthGameName",
       userName: "Soffia",

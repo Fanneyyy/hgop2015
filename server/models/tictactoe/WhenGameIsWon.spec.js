@@ -60,6 +60,8 @@ describe('winning a game', function() {
         event: "GameWon",
         name: "SixthGameName",
         userName: "Anna",
+        x: 0,
+        y: 2,
         side: 'X',
         timeStamp: "2015.12.04T21:52:00"
       }];
@@ -86,6 +88,8 @@ describe('winning a game', function() {
         event: "GameWon",
         name: "SixthGameName",
         userName: "Anna",
+        x: 2,
+        y: 1,
         side: 'X',
         timeStamp: "2015.12.04T23:52:00"
       }];
@@ -112,6 +116,8 @@ describe('winning a game', function() {
         event: "GameWon",
         name: "SixthGameName",
         userName: "Anna",
+        x: 2,
+        y: 2,
         side: 'X',
         timeStamp: "2015.12.04T23:52:00"
       }];

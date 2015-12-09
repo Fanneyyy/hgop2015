@@ -75,9 +75,11 @@ module.exports = function tictactoeCommandHandler(events) {
       }
     },
     "JoinGame": function(cmd) {
+      console.log("I'm called");
       if (!gameState.gameCreatedEvent) {
         return [{
           id: cmd.id,
+          gameId: cmd.gameId,
           event: "GameDoesNotExist",
           name: cmd.name,
           userName: cmd.userName,
@@ -87,6 +89,7 @@ module.exports = function tictactoeCommandHandler(events) {
       if (gameState.gameCreatedEvent.creatorUserName) {
         return [{
           id: cmd.id,
+          gameId: cmd.gameId,
           event: "GameIsFull",
           name: cmd.name,
           userName: cmd.userName,
@@ -95,6 +98,7 @@ module.exports = function tictactoeCommandHandler(events) {
       }
       return [{
         id: cmd.id,
+        gameId: cmd.gameId,
         event: "GameJoined",
         name: cmd.name,
         userName: cmd.userName,
@@ -110,9 +114,12 @@ module.exports = function tictactoeCommandHandler(events) {
           gameLogic.DiagonalWon(cmd.x, cmd.y, cmd.side)) {
           return [{
             id: cmd.id,
+            gameId: cmd.gameId,
             event: "GameWon",
             name: gameState.gameCreatedEvent.name,
             userName: cmd.userName,
+            x: cmd.x,
+            y: cmd.y,
             side: cmd.side,
             timeStamp: cmd.timeStamp
           }];
@@ -120,13 +127,18 @@ module.exports = function tictactoeCommandHandler(events) {
         if (gameLogic.GameDraw()) {
           return [{
             id: cmd.id,
+            gameId: cmd.gameId,
             event: "GameDraw",
             name: gameState.gameCreatedEvent.name,
+            x: cmd.x,
+            y: cmd.y,
+            side: cmd.side,
             timeStamp: cmd.timeStamp
           }];
         }
         return [{
           id: cmd.id,
+          gameId: cmd.gameId,
           event: "MoveMade",
           name: gameState.gameCreatedEvent.name,
           userName: cmd.userName,
@@ -138,6 +150,7 @@ module.exports = function tictactoeCommandHandler(events) {
       }
       return [{
         id: cmd.id,
+        gameId: cmd.gameId,
         event: "IllegalMove",
         name: gameState.gameCreatedEvent.name,
         userName: cmd.userName,

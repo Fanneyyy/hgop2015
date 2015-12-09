@@ -99,6 +99,9 @@ describe('a game is a draw', function() {
         id: "888",
         event: "GameDraw",
         name: "SixthGameName",
+        x: 2,
+        y: 2,
+        side:'X',
         timeStamp: "2015.12.04T22:13:00"
       }];
 

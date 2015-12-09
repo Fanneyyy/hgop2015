@@ -6,12 +6,14 @@ describe('making a play command', function() {
   it('should make a play on a new game', function() {
     given = [{
       id: "898",
+      gameId: "555",
       event: "GameCreated",
       name: "SixthGameName",
       userName: "Halldor",
       timeStamp: "2015.12.04T20:50:00"
     },{
       id: "888",
+      gameId: "555",
       event: "GameJoined",
       name: "SixthGameName",
       userName: "Anna",
@@ -20,6 +22,7 @@ describe('making a play command', function() {
     }];
     when = {
       id: "888",
+      gameId: "555",
       command: "MakeMove",
       userName: "Anna",
       x: 1,
@@ -29,6 +32,7 @@ describe('making a play command', function() {
     };
     then = [{
       id: "888",
+      gameId: "555",
       event: "MoveMade",
       name: "SixthGameName",
       userName: "Anna",
@@ -46,12 +50,14 @@ describe('making a play command', function() {
   it('making a play on a non-empty box should be illegal', function() {
     given = [{
       id: "898",
+      gameId: "555",
       event: "GameCreated",
       name: "SixthGameName",
       userName: "Halldor",
       timeStamp: "2015.12.04T20:50:00"
     },{
       id: "888",
+      gameId: "555",
       event: "GameJoined",
       name: "SixthGameName",
       userName: "Anna",
@@ -59,6 +65,7 @@ describe('making a play command', function() {
       timeStamp: "2015.12.04T21:31:00"
     },{
       id: "888",
+      gameId: "555",
       event: "MoveMade",
       name: "SixthGameName",
       userName: "Anna",
@@ -69,6 +76,7 @@ describe('making a play command', function() {
     }];
     when = {
       id: "888",
+      gameId: "555",
       command: "MakeMove",
       userName: "Halldor",
       x: 1,
@@ -78,6 +86,7 @@ describe('making a play command', function() {
     };
     then = [{
       id: "888",
+      gameId: "555",
       event: "IllegalMove",
       name: "SixthGameName",
       userName: "Halldor",
@@ -95,12 +104,14 @@ describe('making a play command', function() {
   it('making a play on a box that is out of bounds should be illegal', function() {
     given = [{
       id: "898",
+      gameId: "555",
       event: "GameCreated",
       name: "SeventhGameName",
       userName: "Siggi",
       timeStamp: "2015.12.04T22:50:00"
     },{
       id: "999",
+      gameId: "555",
       event: "GameJoined",
       name: "SeventhGameName",
       userName: "Elva",
@@ -109,6 +120,7 @@ describe('making a play command', function() {
     }];
     when = {
       id: "999",
+      gameId: "555",
       command: "MakeMove",
       userName: "Siggi",
       x: 1,
@@ -118,6 +130,7 @@ describe('making a play command', function() {
     };
     then = [{
       id: "999",
+      gameId: "555",
       event: "IllegalMove",
       name: "SeventhGameName",
       userName: "Siggi",
