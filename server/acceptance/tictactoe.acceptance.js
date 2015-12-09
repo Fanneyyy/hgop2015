@@ -53,27 +53,65 @@ describe('TEST ENV GET /api/gameHistory', function() {
 
   it('Should execute fluid API test for create game', function (done) {
     given(
-      user("YourUser")
-        .createsGame("TheFirstGame")
+      user("Fanney")
+        .createsGame("666")
+        .named("TheFirstGame")
     )
       .expect("GameCreated")
       .withName("TheFirstGame")
+      .byUser("Fanney")
       .isOk(done);
   });
 
   it('Should execute fluid API test for join game', function (done) {
     given(
-      user("YourUser")
-        .createsGame("GameIdOne")
-        .named("TheFirstGame")
+      user("Svavar")
+        .createsGame("686")
+        .named("TheSecondGame")
       )
       .and(
-        user("OtherUser")
-          .joinsGame("GameIdOne")
+        user("Mani")
+          .joinsGame("686")
       )
       .expect("GameJoined")
-      .withName("TheFirstGame")
-      .byUser("OtherUser")
+      .withName("TheSecondGame")
+      .byUser("Mani")
       .isOk(done)
   });
+
+  // STILL TO IMPLEMENT...
+  //it('Should play game until game is won', function (done) {
+  //  given(
+  //    user("Maren")
+  //      .createsGame("232")
+  //      .named("TheThirdGame")
+  //  )
+  //    .and(
+  //      user("Musli")
+  //        .joinsGame("232")
+  //    )
+  //    .and(
+  //      user("Maren")
+  //        .placeMove(0,0)
+  //    )
+  //    .and(
+  //      user("Musli")
+  //        .placeMove(2,2)
+  //    )
+  //    .and(
+  //      user("Maren")
+  //        .placeMove(0,1)
+  //    )
+  //    .and(
+  //      user("Musli")
+  //        .placeMove(1,2)
+  //    )
+  //    .and(
+  //      user("Maren")
+  //        .placeMove(0,2)
+  //    )
+  //    .expect("GameWin")
+  //    .byUser("Maren")
+  //    .isOk(done);
+  //});
 });

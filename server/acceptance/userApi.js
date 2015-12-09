@@ -33,6 +33,8 @@ module.exports = function user(person) {
       cmd.command = "MakeMove";
       cmd.x = x;
       cmd.y = y;
+      // things to do...
+      cmd.side = undefined;
       userApi.destination = '/api/makeMove';
       return userApi;
     }
