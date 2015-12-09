@@ -1,0 +1,70 @@
+'use strict';
+
+var utils = require('lodash');
+var should = require('should');
+var request = require('supertest');
+var acceptanceUrl = process.env.ACCEPTANCE_URL;
+
+module.exports = function given(cmdName) {
+  var cmd = [
+    cmdName
+  ];
+
+  var gameId = cmdName._user.gameId;
+  var username = cmdName._user.userName;
+  var name = cmdName._user.name;
+
+  var expectations = {
+    event: 'thisIsAtestCaseThatShouldNotBeUsed',
+    name: undefined,
+    otherUser: undefined
+  };
+
+  var givenApi = {
+
+    and: function(nextCommand) {
+      nextCommand._user.name = name;
+      nextCommand._user.creatorUserName = username;
+      cmd.push(nextCommand);
+      return givenApi;
+    },
+    expect: function (eventName) {
+      expectations.event = eventName;
+      return givenApi;
+    },
+    withName: function (gameName) {
+      expectations.name = gameName;
+      return givenApi;
+    },
+    byUser: function (otherUser) {
+      expectations.otherUser = otherUser;
+      return givenApi;
+    },
+    isOk: function (done) {
+      var req = request(acceptanceUrl);
+
+      utils.each(cmd, function(comm) {
+        req
+          .post(comm.destination)
+          .type('json')
+          .send(comm._user)
+          .end(function (err, res) {
+            if (err) return done(err);
+          });
+      });
+      request(acceptanceUrl)
+        .get('/api/gameHistory/' + gameId)
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function (err, res) {
+          if (err) return done(err);
+          res.body.should.be.instanceof(Array);
+          should(res.body[res.body.length-1].event).eql(expectations.event);
+          should(res.body[res.body.length-1].name).eql(expectations.name);
+          should(res.body[res.body.length-1].userName).eql(expectations.otherUser);
+          done();
+        });
+    }
+  };
+  return givenApi;
+};

@@ -2,6 +2,8 @@
 
 var should = require('should');
 var request = require('supertest');
+var given = require('./fluidApi.js');
+var user = require('./userApi.js');
 var acceptanceUrl = process.env.ACCEPTANCE_URL;
 
 describe('TEST ENV GET /api/gameHistory', function() {
@@ -58,65 +60,20 @@ describe('TEST ENV GET /api/gameHistory', function() {
       .withName("TheFirstGame")
       .isOk(done);
   });
+
+  it('Should execute fluid API test for join game', function (done) {
+    given(
+      user("YourUser")
+        .createsGame("GameIdOne")
+        .named("TheFirstGame")
+      )
+      .and(
+        user("OtherUser")
+          .joinsGame("GameIdOne")
+      )
+      .expect("GameJoined")
+      .withName("TheFirstGame")
+      .byUser("OtherUser")
+      .isOk(done)
+  });
 });
-
-function given(cmdName) {
-  var cmd = {
-    commandName: cmdName,
-    destination: '/api/createGame'
-  };
-  delete cmd.commandName.createsGame;
-
-  var expectations = [];
-
-  var givenApi = {
-
-    expect: function (eventName) {
-      expectations.push({event:eventName});
-      return givenApi;
-    },
-    withName: function (gameName) {
-      expectations.push({name:gameName});
-      return givenApi;
-    },
-    isOk: function (done) {
-      var req = request(acceptanceUrl);
-      req
-        .post(cmd.destination)
-        .type('json')
-        .send(cmd.commandName)
-        .end(function (err, res) {
-          if (err) return done(err);
-          request(acceptanceUrl)
-            .get('/api/gameHistory/' + cmd.commandName.gameId)
-            .expect(200)
-            .expect('Content-Type', /json/)
-            .end(function (err, res) {
-              if (err) return done(err);
-              res.body.should.be.instanceof(Array);
-              should(res.body.event).eql(expectations.event);
-              should(res.body.name).eql(expectations.name);
-              done();
-            });
-        });
-    }
-  };
-  return givenApi;
-}
-
-function user(person) {
-  var user = {
-    id: "1234",
-    gameId: "999",
-    userName: person,
-    name: undefined,
-    command: undefined,
-    timeStamp: new Date(),
-    createsGame: function(gameName) {
-      user.name = gameName;
-      user.command = "CreateGame";
-      return user;
-    }
-  };
-  return user;
-}
