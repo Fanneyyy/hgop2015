@@ -131,7 +131,7 @@ module.exports = function (grunt) {
         src: [
           'server/**/*.js',
           '!server/**/*.acceptance.js',
-          'server/**/*.load.js',
+          '!server/**/*.load.js',
           '!server/**/*.spec.js'
         ]
       },
@@ -141,7 +141,7 @@ module.exports = function (grunt) {
         },
         src: [
           'server/**/*.spec.js',
-          '!server/**/*.acceptance.js',
+          'server/**/*.acceptance.js',
           'server/**/*.load.js'
         ]
       },
@@ -440,17 +440,17 @@ module.exports = function (grunt) {
     },
 
     mochaTest: {
-      test:{
+      test: {
         options: {
           reporter: process.env.MOCHA_REPORTER || 'spec',
-          captureFile:'server-tests'
+          captureFile: 'server-tests'
         },
         src: ['server/**/*.spec.js']
       },
       acceptance: {
         options: {
           reporter: process.env.MOCHA_REPORTER || 'spec',
-          captureFile:'acceptance-tests'
+          captureFile: 'acceptance-tests'
         },
         src: ['server/**/*.acceptance.js']
       },
