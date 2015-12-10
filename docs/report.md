@@ -176,10 +176,26 @@ given(user("YourUser").createsGame("TheFirstGame"))
 og gera fleiri fluid api test.
 
 #### Vandamál
+Tók mig frekar langan tíma því javascriptið var frekar flókið, en þetta hafðist.
 
 #### Útkoma
 Búin að setja upp fluid API test sem virkar á forminu  
 given(user("YourUser").createsGame("TheFirstGame"))
-.expect("GameCreated").withName("TheFirstGame").isOk(done);  
+.expect("GameCreated").withName("TheFirstGame").isOk(done);
+Búin að gera test fyrir create game, join game, winning game and a draw.
+Test api-ið er mjög þægilegt í notkun en kóðinn sjálfur er kannski svolítið flókinn.
+
+#### Lærdómur
+Lærði mjög mikið á javascript, sérstaklega chaining sem er rosalega powerful og
+þægilegt í notkun þegar maður er aðeins farinn að skilja það.
+
+## Dagur 10
+
+#### Markmið
+Setja upp load/capacity test.
+
+#### Vandamál
+
+#### Útkoma
 
 #### Lærdómur
