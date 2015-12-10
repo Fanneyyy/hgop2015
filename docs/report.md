@@ -195,7 +195,12 @@ Lærði mjög mikið á javascript, sérstaklega chaining sem er rosalega powerf
 Setja upp load/capacity test.
 
 #### Vandamál
+Fæ alltaf villu ef ég læt capacity testið keyra fleiri en sirka 15 leiki.
 
 #### Útkoma
+Búin að setja upp kóðan fyrir capacity testin en það er greinilega eitthvað ábótavænt í testunum eða
+kóðanum sem testin eru að testa.
 
 #### Lærdómur
+- results of load tests... TODO!
+- Does the load test run in serial or in parallel? TODO!
