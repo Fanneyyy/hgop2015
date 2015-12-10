@@ -114,4 +114,55 @@ describe('TEST ENV GET /api/gameHistory', function() {
       .byUser("Maren")
       .isOk(done);
   });
+
+  it('Should play game until game is draw', function (done) {
+    given(
+      user("Devil")
+        .createsGame("9282")
+        .named("TheFourthGame")
+    )
+      .and(
+        user("Angel")
+          .joinsGame("9282")
+      )
+      .and(
+        user("Devil")
+          .placeMove(0,0)
+      )
+      .and(
+        user("Angel")
+          .placeMove(0,1)
+      )
+      .and(
+        user("Devil")
+          .placeMove(0,2)
+      )
+      .and(
+        user("Angel")
+          .placeMove(1,1)
+      )
+      .and(
+        user("Devil")
+          .placeMove(1,0)
+      )
+      .and(
+        user("Angel")
+          .placeMove(1,2)
+      )
+      .and(
+        user("Devil")
+          .placeMove(2,1)
+      )
+      .and(
+        user("Angel")
+          .placeMove(2,0)
+      )
+      .and(
+        user("Devil")
+          .placeMove(2,2)
+      )
+      .expect("GameDraw")
+      .withName("TheFourthGame")
+      .isOk(done);
+  });
 });

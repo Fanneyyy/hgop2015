@@ -23,7 +23,7 @@ module.exports = function given(cmdName) {
   var givenApi = {
 
     and: function(nextCommand) {
-      if (nextCommand._user.hasOwnProperty(nextCommand._user.side)) {
+      if (nextCommand._user.hasOwnProperty("side")) {
         if (nextCommand._user.userName === username) {
           nextCommand._user.side = 'X';
         } else {
@@ -50,9 +50,7 @@ module.exports = function given(cmdName) {
     },
     isOk: function (done) {
       var req = request(acceptanceUrl);
-
       utils.each(cmd, function(comm) {
-        console.log(comm._user);
         req
           .post(comm.destination)
           .type('json')
