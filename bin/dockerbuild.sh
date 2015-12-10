@@ -59,7 +59,7 @@ fi
 
 # pushing to docker
 echo Pushing docker image
-docker push fanneyyy/tictactoe:$GIT_COMMIT .
+docker push fanneyyy/tictactoe:$GIT_COMMIT
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then
 	echo "Failure in pushing docker image, exit code: " $EXITCODE
 	exit $EXITCODE; 

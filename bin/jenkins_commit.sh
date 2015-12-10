@@ -20,3 +20,7 @@ fi
 export DISPLAY=:0
 
 ./bin/dockerbuild.sh
+EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then
+	echo "Docker build failed, exit code: " $EXITCODE
+	exit $EXITCODE; 
+fi
