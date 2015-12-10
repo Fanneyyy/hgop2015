@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'Jenkins deployment stage script'
+echo 'Jenkins load/capacity test script'
 # problems with finding grunt
 export PATH=/usr/local/bin:$PATH;
 
@@ -18,10 +18,5 @@ fi
 # because of problems with graphic cards
 export DISPLAY=:0
 export ACCEPTANCE_URL=http://192.168.50.4:8080
-./bin/deploy.sh
-EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then
-	echo "The Deploy failed, exit code: " $EXITCODE
-	exit $EXITCODE; 
-fi
 
-grunt mochaTest:acceptance
+grunt mochaTest:load
