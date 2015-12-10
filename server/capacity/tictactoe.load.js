@@ -1,7 +1,5 @@
 'use strict';
 
-var should = require('should');
-var request = require('supertest');
 var user = require('../acceptance/userApi');
 var given = require('../acceptance/fluidApi');
 
