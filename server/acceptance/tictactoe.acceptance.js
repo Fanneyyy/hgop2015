@@ -52,11 +52,7 @@ describe('TEST ENV GET /api/gameHistory', function() {
   });
 
   it('Should execute fluid API test for create game', function (done) {
-    given(
-      user("Fanney")
-        .createsGame("666")
-        .named("TheFirstGame")
-    )
+    given(user("Fanney").createsGame("666").named("TheFirstGame"))
       .expect("GameCreated")
       .withName("TheFirstGame")
       .byUser("Fanney")
@@ -64,15 +60,8 @@ describe('TEST ENV GET /api/gameHistory', function() {
   });
 
   it('Should execute fluid API test for join game', function (done) {
-    given(
-      user("Svavar")
-        .createsGame("686")
-        .named("TheSecondGame")
-      )
-      .and(
-        user("Mani")
-          .joinsGame("686")
-      )
+    given(user("Svavar").createsGame("686").named("TheSecondGame"))
+      .and(user("Mani").joinsGame("686"))
       .expect("GameJoined")
       .withName("TheSecondGame")
       .byUser("Mani")
@@ -80,35 +69,13 @@ describe('TEST ENV GET /api/gameHistory', function() {
   });
 
   it('Should play game until game is won', function (done) {
-    given(
-      user("Maren")
-        .createsGame("232")
-        .named("TheThirdGame")
-      )
-      .and(
-        user("Musli")
-          .joinsGame("232")
-      )
-      .and(
-        user("Maren")
-          .placeMove(0,0)
-      )
-      .and(
-        user("Musli")
-          .placeMove(2,2)
-      )
-      .and(
-        user("Maren")
-          .placeMove(0,1)
-      )
-      .and(
-        user("Musli")
-          .placeMove(1,2)
-      )
-      .and(
-        user("Maren")
-          .placeMove(0,2)
-      )
+    given(user("Maren").createsGame("232").named("TheThirdGame"))
+      .and(user("Musli").joinsGame("232"))
+      .and(user("Maren").placeMove(0,0))
+      .and(user("Musli").placeMove(2,2))
+      .and(user("Maren").placeMove(0,1))
+      .and(user("Musli").placeMove(1,2))
+      .and(user("Maren").placeMove(0,2))
       .expect("GameWon")
       .withName("TheThirdGame")
       .byUser("Maren")
@@ -116,51 +83,17 @@ describe('TEST ENV GET /api/gameHistory', function() {
   });
 
   it('Should play game until game is draw', function (done) {
-    given(
-      user("Devil")
-        .createsGame("9282")
-        .named("TheFourthGame")
-    )
-      .and(
-        user("Angel")
-          .joinsGame("9282")
-      )
-      .and(
-        user("Devil")
-          .placeMove(0,0)
-      )
-      .and(
-        user("Angel")
-          .placeMove(0,1)
-      )
-      .and(
-        user("Devil")
-          .placeMove(0,2)
-      )
-      .and(
-        user("Angel")
-          .placeMove(1,1)
-      )
-      .and(
-        user("Devil")
-          .placeMove(1,0)
-      )
-      .and(
-        user("Angel")
-          .placeMove(1,2)
-      )
-      .and(
-        user("Devil")
-          .placeMove(2,1)
-      )
-      .and(
-        user("Angel")
-          .placeMove(2,0)
-      )
-      .and(
-        user("Devil")
-          .placeMove(2,2)
-      )
+    given(user("Devil").createsGame("9282").named("TheFourthGame"))
+      .and(user("Angel").joinsGame("9282"))
+      .and(user("Devil").placeMove(0,0))
+      .and(user("Angel").placeMove(0,1))
+      .and(user("Devil").placeMove(0,2))
+      .and(user("Angel").placeMove(1,1))
+      .and(user("Devil").placeMove(1,0))
+      .and(user("Angel").placeMove(1,2))
+      .and(user("Devil").placeMove(2,1))
+      .and(user("Angel").placeMove(2,0))
+      .and(user("Devil").placeMove(2,2))
       .expect("GameDraw")
       .withName("TheFourthGame")
       .isOk(done);
