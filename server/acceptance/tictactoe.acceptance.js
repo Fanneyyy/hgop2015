@@ -79,39 +79,39 @@ describe('TEST ENV GET /api/gameHistory', function() {
       .isOk(done)
   });
 
-  // STILL TO IMPLEMENT...
-  //it('Should play game until game is won', function (done) {
-  //  given(
-  //    user("Maren")
-  //      .createsGame("232")
-  //      .named("TheThirdGame")
-  //  )
-  //    .and(
-  //      user("Musli")
-  //        .joinsGame("232")
-  //    )
-  //    .and(
-  //      user("Maren")
-  //        .placeMove(0,0)
-  //    )
-  //    .and(
-  //      user("Musli")
-  //        .placeMove(2,2)
-  //    )
-  //    .and(
-  //      user("Maren")
-  //        .placeMove(0,1)
-  //    )
-  //    .and(
-  //      user("Musli")
-  //        .placeMove(1,2)
-  //    )
-  //    .and(
-  //      user("Maren")
-  //        .placeMove(0,2)
-  //    )
-  //    .expect("GameWin")
-  //    .byUser("Maren")
-  //    .isOk(done);
-  //});
+  it('Should play game until game is won', function (done) {
+    given(
+      user("Maren")
+        .createsGame("232")
+        .named("TheThirdGame")
+      )
+      .and(
+        user("Musli")
+          .joinsGame("232")
+      )
+      .and(
+        user("Maren")
+          .placeMove(0,0)
+      )
+      .and(
+        user("Musli")
+          .placeMove(2,2)
+      )
+      .and(
+        user("Maren")
+          .placeMove(0,1)
+      )
+      .and(
+        user("Musli")
+          .placeMove(1,2)
+      )
+      .and(
+        user("Maren")
+          .placeMove(0,2)
+      )
+      .expect("GameWon")
+      .withName("TheThirdGame")
+      .byUser("Maren")
+      .isOk(done);
+  });
 });

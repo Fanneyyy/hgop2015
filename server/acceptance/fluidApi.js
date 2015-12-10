@@ -15,7 +15,7 @@ module.exports = function given(cmdName) {
   var name = cmdName._user.name;
 
   var expectations = {
-    event: 'thisIsAtestCaseThatShouldNotBeUsed',
+    event: undefined,
     name: undefined,
     otherUser: undefined
   };
@@ -23,6 +23,14 @@ module.exports = function given(cmdName) {
   var givenApi = {
 
     and: function(nextCommand) {
+      if (nextCommand._user.hasOwnProperty(nextCommand._user.side)) {
+        if (nextCommand._user.userName === username) {
+          nextCommand._user.side = 'X';
+        } else {
+          nextCommand._user.side = 'O';
+        }
+      }
+      nextCommand._user.gameId = gameId;
       nextCommand._user.name = name;
       nextCommand._user.creatorUserName = username;
       cmd.push(nextCommand);
@@ -44,6 +52,7 @@ module.exports = function given(cmdName) {
       var req = request(acceptanceUrl);
 
       utils.each(cmd, function(comm) {
+        console.log(comm._user);
         req
           .post(comm.destination)
           .type('json')

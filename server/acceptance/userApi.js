@@ -30,10 +30,11 @@ module.exports = function user(person) {
       return userApi;
     },
     placeMove: function(x,y) {
+      cmd.userName = person;
+      cmd.creatorUserName = undefined;
       cmd.command = "MakeMove";
       cmd.x = x;
       cmd.y = y;
-      // things to do...
       cmd.side = undefined;
       userApi.destination = '/api/makeMove';
       return userApi;
