@@ -195,12 +195,22 @@ Lærði mjög mikið á javascript, sérstaklega chaining sem er rosalega powerf
 Setja upp load/capacity test.
 
 #### Vandamál
-Fæ alltaf villu ef ég læt capacity testið keyra fleiri en sirka 15 leiki.
+Fékk alltaf villu ef ég lét capacity testið keyra fleiri en sirka 15 leiki.
+Var vandamál að finna leið til að láta testin klára eitt command áður en það sendir inn annað.
+Fékk hint og gerði recursive fall sem sá til þess að commands voru keyrð til enda.
+Capacity testið er mjög slow og 1000 leikir taka mjög langan tíma.
 
 #### Útkoma
-Búin að setja upp kóðan fyrir capacity testin en það er greinilega eitthvað ábótavænt í testunum eða
-kóðanum sem testin eru að testa.
+Búin að setja upp kóðan fyrir capacity testin og bæta þeim inn í Jenkins pipeline-ið.
 
 #### Lærdómur
-- results of load tests... TODO!
-- Does the load test run in serial or in parallel? TODO!
+Útkoma úr load/capacity testum:
+| Fjöldi Leikja | Tími          |
+| ------------- |:-------------:|
+| 1000          | 117045ms      |
+| 1000          | 49049ms       |
+| 1000          | 45655ms       |
+| 1000          | 37752ms       |
+| 1000          | 47612ms       |
+
+Does the load test run in serial or in parallel? TODO!
