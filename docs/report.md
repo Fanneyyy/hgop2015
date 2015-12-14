@@ -205,12 +205,23 @@ Búin að setja upp kóðan fyrir capacity testin og bæta þeim inn í Jenkins 
 
 #### Lærdómur
 Útkoma úr load/capacity testum:
+
 | Fjöldi Leikja | Tími          |
-| ------------- |:-------------:|
+| ------------- | ------------- |
 | 1000          | 117045ms      |
 | 1000          | 49049ms       |
 | 1000          | 45655ms       |
 | 1000          | 37752ms       |
 | 1000          | 47612ms       |
+
+Þar sem testin voru mjög lengi að keyra þurfti ég að fækka þeim og fékk þá:
+
+| Fjöldi Leikja | Tími          |
+| ------------- | ------------- |
+| 150           | 5946ms        |
+| 150           | 6440ms        |
+| 150           | 4967ms        |
+
+Setti þá timeout sem 8000ms
 
 Does the load test run in serial or in parallel? TODO!
