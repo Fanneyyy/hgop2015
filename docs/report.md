@@ -224,4 +224,21 @@ Búin að setja upp kóðan fyrir capacity testin og bæta þeim inn í Jenkins 
 
 Setti þá timeout sem 8000ms
 
-Does the load test run in serial or in parallel? TODO!
+Does the load test run in serial(synchronous) or in parallel(asynchronous)?
+Ajax köllin eru async sem default, þar sem Node notast aðeins við einn þráð.
+Ef köllin eru sett sem sync þá myndi allt á host síðunni frjósa á meðan væri verið að bíða eftir svari frá kallinu.
+Það er því ekki mælt með að setja async sem false.
+Það þarf þó að passa að lenda ekki í því eins og ég gerði að vera ekki komin með svar við kalli sem byggir á öðru áður en maður sendir það.
+Þess vegna var góð lausn að gera köllinn recursive og sjá þá til þess að svarið sé komið áður en næsta command er sent.
+Þetta á þó ekki við um hvern leik í heild, þar sem margir leikir geta verið að keyra async.
+
+## Dagur 11
+
+#### Markmið
+Setja upp rekjanleika fyrir úgefnar útgáfur. Þ.e. þá ætti að vera hægt að setja upp hvaða fyrrum útgefna útgáfu sem er.
+
+#### Vandamál
+
+#### Útkoma
+
+#### Lærdómur
