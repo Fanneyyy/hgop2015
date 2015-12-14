@@ -6,8 +6,11 @@ client/bower_components
 dist
 /server/config/local.env.js
 .DS_Store
-bin/test.sh
-bin/loadTesting.sh
+
+# Scripts
+bin/localscripts/*
+
+# Test results
 acceptance-tests
 server-tests
 load-tests
