@@ -1,6 +1,5 @@
 'use strict';
 
-var utils = require('lodash');
 var should = require('should');
 var request = require('supertest');
 var acceptanceUrl = process.env.ACCEPTANCE_URL;
@@ -19,6 +18,8 @@ module.exports = function given(cmdName) {
     name: undefined,
     otherUser: undefined
   };
+
+  var req = request(acceptanceUrl);
 
   var givenApi = {
 
@@ -49,16 +50,23 @@ module.exports = function given(cmdName) {
       return givenApi;
     },
     isOk: function (done) {
-      var req = request(acceptanceUrl);
-      utils.each(cmd, function(comm) {
-        req
-          .post(comm.destination)
-          .type('json')
-          .send(comm._user)
-          .end(function (err, res) {
-            if (err) return done(err);
-          });
-      });
+      postCommand(cmd, 0, done);
+    }
+  };
+  return givenApi;
+
+  function postCommand(commands, i, done) {
+    if (i < commands.length) {
+      req
+        .post(commands[i].destination)
+        .type('json')
+        .send(commands[i]._user)
+        .end(function (err, res) {
+          if (err) return done(err);
+          res.statusCode.should.be.eql(200);
+          postCommand(commands, ++i, done);
+        });
+    } else {
       request(acceptanceUrl)
         .get('/api/gameHistory/' + gameId)
         .expect(200)
@@ -72,6 +80,5 @@ module.exports = function given(cmdName) {
           done();
         });
     }
-  };
-  return givenApi;
+  }
 };

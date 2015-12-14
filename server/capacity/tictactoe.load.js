@@ -6,8 +6,8 @@ var given = require('../acceptance/fluidApi');
 describe('Capacity testing', function() {
   it('Should play 1000 games in x seconds.', function (done) {
     var doneCount = 0;
-    var gamesToPlay = 15;
-    var x = 6;
+    var gamesToPlay = 1000;
+    var x = 150;
 
     this.timeout(x * 1000);
 
