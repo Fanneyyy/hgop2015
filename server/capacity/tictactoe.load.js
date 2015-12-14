@@ -4,10 +4,10 @@ var user = require('../acceptance/userApi');
 var given = require('../acceptance/fluidApi');
 
 describe('Capacity testing', function() {
-  it('Should play 1000 games in x seconds.', function (done) {
+  it('Should play 150 games in x seconds.', function (done) {
     var doneCount = 0;
-    var gamesToPlay = 1000;
-    var x = 150;
+    var gamesToPlay = 150;
+    var x = 8;
 
     this.timeout(x * 1000);
 
