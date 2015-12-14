@@ -7,6 +7,7 @@ dist
 /server/config/local.env.js
 .DS_Store
 bin/test.sh
+bin/loadTesting.sh
 acceptance-tests
 server-tests
 load-tests
