@@ -18,8 +18,8 @@ describe('Capacity testing', function() {
     };
 
     for (var gameId = 0; gameId < gamesToPlay; gameId++) {
-      given(user("Palpatine").createsGame("" + gameId).named("TheUltimateGame" + gameId))
-        .and(user("BobaFett").joinsGame("" + gameId))
+      given(user("Palpatine").createsGame("Load" + gameId).named("TheUltimateGame" + gameId))
+        .and(user("BobaFett").joinsGame("Load" + gameId))
         .and(user("Palpatine").placeMove(0, 0))
         .and(user("BobaFett").placeMove(0, 1))
         .and(user("Palpatine").placeMove(0, 2))
