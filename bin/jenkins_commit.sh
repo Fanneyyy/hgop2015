@@ -19,8 +19,10 @@ fi
 # because of problems with graphic cards
 export DISPLAY=:0
 
-./bin/dockerbuild.sh $GIT_COMMIT
+./bin/dockerbuild.sh
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then
 	echo "Docker build failed, exit code: " $EXITCODE
 	exit $EXITCODE;
 fi
+
+echo "Done"

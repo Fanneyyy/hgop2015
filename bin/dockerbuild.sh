@@ -27,6 +27,7 @@ cat > ./dist/githash.txt <<_EOF_
 $GIT_COMMIT
 _EOF_
 
+# View for deploying old releases
 cat > ./dist/public/version.html << _EOF_
 <!doctype html>
 <head>
