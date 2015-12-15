@@ -28,18 +28,7 @@ $GIT_COMMIT
 _EOF_
 
 # View for deploying old releases
-cat > ./dist/public/version.html << _EOF_
-<!doctype html>
-<head>
-   <title>TicTacToe version information</title>
-</head>
-<body>
-   <span>Origin:</span> <span>$GIT_URL</span>
-   <span>Revision:</span> <span>$GIT_COMMIT</span>
-   <p>
-   <div><a href="$GITHUB_URL/commits/$GIT_COMMIT">History of current version</a></div>
-</body>
-_EOF_
+./bin/version_html_site.sh $GIT_URL $GIT_COMMIT $GITHUB_URL
 
 # moving files
 cp ./Dockerfile ./dist/
