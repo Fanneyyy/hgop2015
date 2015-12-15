@@ -1,11 +1,16 @@
 #!/bin/bash
 
 echo Connecting to Test Environment
-echo Pulling newest docker image
-echo Running on port 8081
-ssh vagrant@192.168.50.4 '
-	(docker kill tictactoe8080 &&
-	docker rm  tictactoe8080 &&
+echo Running $1 on port $2 on $3
+
+ssh vagrant@$3 '
+	(echo Removing currently running images &&
+	docker kill tictactoe$2 &&
+	docker rm  tictactoe$2 &&
+	echo Pulling newest docker image &&
 	docker pull fanneyyy/tictactoe &&
-	docker run -p 8080:8080 -d --name -e tictactoe8080 "NODE_ENV=production" fanneyyy/tictactoe)'
+	echo Running newest docker image &&
+	docker run -p $2:8080 -d --name tictactoe$2 -e "NODE_ENV=production" fanneyyy/tictactoe:$1)'
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
+
+echo "Done"

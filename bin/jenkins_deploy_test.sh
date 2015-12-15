@@ -1,5 +1,8 @@
 #!/bin/bash
 
+PORT=8080
+IP=192.168.50.4
+
 echo 'Jenkins deployment test stage script'
 # problems with finding grunt
 export PATH=/usr/local/bin:$PATH;
@@ -17,13 +20,15 @@ fi
 
 # because of problems with graphic cards
 export DISPLAY=:0
-export ACCEPTANCE_URL=http://192.168.50.4:8080
+export ACCEPTANCE_URL=http://$IP:$PORT
 export GIT_UPSTREAM_HASH=$(<dist/githash.txt)
-env
-./bin/deploy.sh 8080
+
+./bin/deploy.sh $GIT_UPSTREAM_HASH $PORT $IP
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then
 	echo "The Deploy failed, exit code: " $EXITCODE
 	exit $EXITCODE;
 fi
 
 grunt mochaTest:acceptance
+
+echo "Done"
