@@ -14,3 +14,4 @@ bin/localscripts/*
 acceptance-tests
 server-tests
 load-tests
+load-tests.txt
