@@ -7,12 +7,12 @@ export PATH=/usr/local/bin:$PATH;
 npm install
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then
 	echo "Failure in npm install, exit code: " $EXITCODE
-	exit $EXITCODE; 
+	exit $EXITCODE;
 fi
 bower install
 EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then
 	echo "Failure in bower install, exit code: " $EXITCODE
-	exit $EXITCODE; 
+	exit $EXITCODE;
 fi
 
 # because of problems with graphic cards
