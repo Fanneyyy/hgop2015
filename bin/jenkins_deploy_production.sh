@@ -1,5 +1,8 @@
 #!/bin/bash
 
+PORT=8081
+IP=192.168.50.4
+
 echo 'Jenkins deployment production stage script'
 # problems with finding grunt
 export PATH=/usr/local/bin:$PATH;
@@ -17,15 +20,15 @@ fi
 
 # because of problems with graphic cards
 export DISPLAY=:0
+export ACCEPTANCE_URL=http://$IP:$PORT
+export GIT_UPSTREAM_HASH=$(<dist/githash.txt)
 
-#!/bin/bash
+./bin/deploy.sh $GIT_UPSTREAM_HASH $PORT $IP
+EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then
+	echo "The Deploy failed, exit code: " $EXITCODE
+	exit $EXITCODE;
+fi
 
-echo Connecting to Test Environment
-echo Pulling newest docker image
-echo Running on port
-ssh vagrant@192.168.50.4 '
-	(docker kill tictactoe8081 &&
-	docker rm  tictactoe8081 &&
-	docker pull fanneyyy/tictactoe &&
-	docker run -p 8081:8080 -d --name -e tictactoe8081 "NODE_ENV=production" fanneyyy/tictactoe)'
-EXITCODE=$?; if [[ $EXITCODE != 0 ]]; then exit $EXITCODE; fi
+grunt mochaTest:acceptance
+
+echo "Done"
