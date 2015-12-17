@@ -24,12 +24,10 @@ module.exports = function given(cmdName) {
   var givenApi = {
 
     and: function(nextCommand) {
-      if (nextCommand._user.hasOwnProperty("side")) {
-        if (nextCommand._user.userName === username) {
-          nextCommand._user.side = 'X';
-        } else {
-          nextCommand._user.side = 'O';
-        }
+      if (nextCommand._user.userName === username) {
+        nextCommand._user.side = 'X';
+      } else {
+        nextCommand._user.side = 'O';
       }
       nextCommand._user.gameId = gameId;
       nextCommand._user.name = name;

@@ -13,6 +13,7 @@ module.exports = function user(person) {
     createsGame: function(id) {
       cmd.gameId = id;
       cmd.userName = person;
+      cmd.side = 'X';
       cmd.command = "CreateGame";
       userApi.destination = '/api/createGame';
       return userApi;
@@ -25,6 +26,7 @@ module.exports = function user(person) {
       cmd.gameId = id;
       cmd.userName = person;
       cmd.creatorUserName = undefined;
+      cmd.side = 'O';
       cmd.command = "JoinGame";
       userApi.destination = '/api/joinGame';
       return userApi;
@@ -35,7 +37,6 @@ module.exports = function user(person) {
       cmd.command = "MakeMove";
       cmd.x = x;
       cmd.y = y;
-      cmd.side = undefined;
       userApi.destination = '/api/makeMove';
       return userApi;
     }
