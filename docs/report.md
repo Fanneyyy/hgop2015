@@ -265,3 +265,21 @@ síðan sama artifact í öllum öðrum stigum í pipeline-inu.
 How does the "deploy any version, anywhere" build feature work? Hint: Track GIT_COMMIT+
 Ef maður pushar inn Docker image með Git commit tag-i heldur Docker utan um artifacts með tag-inu og þar með er hægt að
  pulla og runna hvaða gömlum artifact sem er.
+
+## Dagur 12
+
+#### Markmið
+Setja upp client side fyrir Tic tac toe leikinn.
+
+#### Vandamál
+Þurfti að gera talsverðar breytingar á client kóðanum til að passa við mitt service.
+Einnig þurfti að uppfæra mikið af testunum, en ætti að vera komið núna.
+Lenti í mestum erfiðleikum með að skilja Angular kóðan en náði að koma öllum tengingum í gang og lærði mikið í leiðinni.
+
+#### Útkoma
+Komið UI fyrir leikinn sem hægt er að spila. Leikmaður getur sigrað og það getur orðið jafntefli.
+
+#### Lærdómur
+Búin að fikta mjög mikið í Angular kóðanum og ná fram skilningi á köllunum í gegnum application-ið.
+Mikilvægast finnst mér þó að sjá hvað öll prófin voru að hjálpa gífurlega mikið þegar ég lenti í vandræðum.
+Gat nánast alltaf fundið með frekar mikilli nákvæmni hvar villan var upprunin og gat þá sett inn log skipanir til að sjá hvað var að.
