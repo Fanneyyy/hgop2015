@@ -5,20 +5,22 @@ describe('a game is a draw', function() {
 
   beforeEach(function() {
     given = [{
-      id: "898",
+      gameId: "888",
       event: "GameCreated",
       name: "SixthGameName",
       userName: "Halldor",
+      side: "X",
       timeStamp: "2015.12.04T20:50:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "GameJoined",
       name: "SixthGameName",
       userName: "Anna",
+      side: "O",
       creatorUserName: "Halldor",
       timeStamp: "2015.12.04T21:31:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Anna",
       x: 0,
@@ -26,7 +28,7 @@ describe('a game is a draw', function() {
       side:'X',
       timeStamp: "2015.12.04T21:40:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Halldor",
       x: 0,
@@ -34,7 +36,7 @@ describe('a game is a draw', function() {
       side:'O',
       timeStamp: "2015.12.04T21:42:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Anna",
       x: 0,
@@ -42,7 +44,7 @@ describe('a game is a draw', function() {
       side:'X',
       timeStamp: "2015.12.04T21:44:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Halldor",
       x: 1,
@@ -50,7 +52,7 @@ describe('a game is a draw', function() {
       side:'O',
       timeStamp: "2015.12.04T21:42:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Anna",
       x: 1,
@@ -58,7 +60,7 @@ describe('a game is a draw', function() {
       side:'X',
       timeStamp: "2015.12.04T21:44:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Halldor",
       x: 1,
@@ -66,7 +68,7 @@ describe('a game is a draw', function() {
       side:'O',
       timeStamp: "2015.12.04T21:42:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Anna",
       x: 2,
@@ -74,7 +76,7 @@ describe('a game is a draw', function() {
       side:'X',
       timeStamp: "2015.12.04T21:44:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Halldor",
       x: 2,
@@ -87,7 +89,7 @@ describe('a game is a draw', function() {
   describe('board is full', function() {
     it('should be a draw', function() {
       when = {
-        id: "888",
+        gameId: "888",
         command: "MakeMove",
         userName: "Anna",
         x: 2,
@@ -96,7 +98,7 @@ describe('a game is a draw', function() {
         timeStamp: "2015.12.04T22:13:00"
       };
       then = [{
-        id: "888",
+        gameId: "888",
         event: "GameDraw",
         name: "SixthGameName",
         x: 2,

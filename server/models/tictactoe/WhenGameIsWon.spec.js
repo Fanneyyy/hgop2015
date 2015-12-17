@@ -5,20 +5,22 @@ describe('winning a game', function() {
 
   beforeEach(function() {
     given = [{
-      id: "898",
+      gameId: "888",
       event: "GameCreated",
       name: "SixthGameName",
       userName: "Halldor",
+      side: "X",
       timeStamp: "2015.12.04T20:50:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "GameJoined",
       name: "SixthGameName",
       userName: "Anna",
+      side: "O",
       creatorUserName: "Halldor",
       timeStamp: "2015.12.04T21:31:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Anna",
       x: 1,
@@ -26,7 +28,7 @@ describe('winning a game', function() {
       side:'X',
       timeStamp: "2015.12.04T21:40:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Anna",
       x: 0,
@@ -34,7 +36,7 @@ describe('winning a game', function() {
       side:'X',
       timeStamp: "2015.12.04T21:42:00"
     },{
-      id: "888",
+      gameId: "888",
       event: "MoveMade",
       userName: "Anna",
       x: 0,
@@ -47,7 +49,7 @@ describe('winning a game', function() {
   describe('on a complete row', function() {
     it('should win game', function() {
       when = {
-        id: "888",
+        gameId: "888",
         command: "MakeMove",
         userName: "Anna",
         x: 0,
@@ -56,7 +58,7 @@ describe('winning a game', function() {
         timeStamp: "2015.12.04T21:52:00"
       };
       then = [{
-        id: "888",
+        gameId: "888",
         event: "GameWon",
         name: "SixthGameName",
         userName: "Anna",
@@ -75,7 +77,7 @@ describe('winning a game', function() {
   describe('on a complete column', function() {
     it('should win game', function() {
       when = {
-        id: "888",
+        gameId: "888",
         command: "MakeMove",
         userName: "Anna",
         x: 2,
@@ -84,7 +86,7 @@ describe('winning a game', function() {
         timeStamp: "2015.12.04T23:52:00"
       };
       then = [{
-        id: "888",
+        gameId: "888",
         event: "GameWon",
         name: "SixthGameName",
         userName: "Anna",
@@ -103,7 +105,7 @@ describe('winning a game', function() {
   describe('on a diagonal line', function() {
     it('should win game', function() {
       when = {
-        id: "888",
+        gameId: "888",
         command: "MakeMove",
         userName: "Anna",
         x: 2,
@@ -112,7 +114,7 @@ describe('winning a game', function() {
         timeStamp: "2015.12.04T23:52:00"
       };
       then = [{
-        id: "888",
+        gameId: "888",
         event: "GameWon",
         name: "SixthGameName",
         userName: "Anna",

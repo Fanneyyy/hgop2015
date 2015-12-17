@@ -5,23 +5,22 @@ describe('making a play command', function() {
 
   it('should make a play on a new game', function() {
     given = [{
-      id: "898",
       gameId: "555",
       event: "GameCreated",
       name: "SixthGameName",
       userName: "Halldor",
+      side: "X",
       timeStamp: "2015.12.04T20:50:00"
     },{
-      id: "888",
       gameId: "555",
       event: "GameJoined",
       name: "SixthGameName",
       userName: "Anna",
+      side: "O",
       creatorUserName: "Halldor",
       timeStamp: "2015.12.04T21:31:00"
     }];
     when = {
-      id: "888",
       gameId: "555",
       command: "MakeMove",
       userName: "Anna",
@@ -31,7 +30,6 @@ describe('making a play command', function() {
       timeStamp: "2015.12.04T21:45:00"
     };
     then = [{
-      id: "888",
       gameId: "555",
       event: "MoveMade",
       name: "SixthGameName",
@@ -49,22 +47,21 @@ describe('making a play command', function() {
 
   it('making a play on a non-empty box should be illegal', function() {
     given = [{
-      id: "898",
       gameId: "555",
       event: "GameCreated",
       name: "SixthGameName",
       userName: "Halldor",
+      side: "X",
       timeStamp: "2015.12.04T20:50:00"
     },{
-      id: "888",
       gameId: "555",
       event: "GameJoined",
       name: "SixthGameName",
       userName: "Anna",
+      side: "O",
       creatorUserName: "Halldor",
       timeStamp: "2015.12.04T21:31:00"
     },{
-      id: "888",
       gameId: "555",
       event: "MoveMade",
       name: "SixthGameName",
@@ -75,7 +72,6 @@ describe('making a play command', function() {
       timeStamp: "2015.12.04T21:45:00"
     }];
     when = {
-      id: "888",
       gameId: "555",
       command: "MakeMove",
       userName: "Halldor",
@@ -85,7 +81,6 @@ describe('making a play command', function() {
       timeStamp: "2015.12.04T22:13:00"
     };
     then = [{
-      id: "888",
       gameId: "555",
       event: "IllegalMove",
       name: "SixthGameName",
@@ -103,23 +98,22 @@ describe('making a play command', function() {
 
   it('making a play on a box that is out of bounds should be illegal', function() {
     given = [{
-      id: "898",
       gameId: "555",
       event: "GameCreated",
       name: "SeventhGameName",
       userName: "Siggi",
+      side: "X",
       timeStamp: "2015.12.04T22:50:00"
     },{
-      id: "999",
       gameId: "555",
       event: "GameJoined",
       name: "SeventhGameName",
       userName: "Elva",
+      side: "O",
       creatorUserName: "Siggi",
       timeStamp: "2015.12.04T23:01:00"
     }];
     when = {
-      id: "999",
       gameId: "555",
       command: "MakeMove",
       userName: "Siggi",
@@ -129,7 +123,6 @@ describe('making a play command', function() {
       timeStamp: "2015.12.04T23:05:00"
     };
     then = [{
-      id: "999",
       gameId: "555",
       event: "IllegalMove",
       name: "SeventhGameName",
