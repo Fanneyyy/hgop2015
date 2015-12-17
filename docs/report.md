@@ -224,7 +224,7 @@ Búin að setja upp kóðan fyrir capacity testin og bæta þeim inn í Jenkins 
 
 Setti þá timeout sem 8000ms
 
-Does the load test run in serial(synchronous) or in parallel(asynchronous)?
+Does the load test run in serial(synchronous) or in parallel(asynchronous)?  
 Ajax köllin eru async sem default, þar sem Node notast aðeins við einn þráð.
 Ef köllin eru sett sem sync þá myndi allt á host síðunni frjósa á meðan væri verið að bíða eftir svari frá kallinu.
 Það er því ekki mælt með að setja async sem false.
@@ -235,10 +235,33 @@ Ef köllin eru sett sem sync þá myndi allt á host síðunni frjósa á meðan
 ## Dagur 11
 
 #### Markmið
-Setja upp rekjanleika fyrir úgefnar útgáfur. Þ.e. þá ætti að vera hægt að setja upp hvaða fyrrum útgefna útgáfu sem er.
+Setja upp rekjanleika fyrir útgefnar útgáfur. Þ.e. þá ætti að vera hægt að setja upp hvaða fyrrum útgefna útgáfu sem er.
 
 #### Vandamál
+Smá villa kom upp í slóðinni á commit history hjá mér sem var auðvelt að laga.
 
 #### Útkoma
+Er núna komin með 4 stig í Jenkins sem keyra hvert á eftir öðru ef enginn vandmál koma upp.
+Deployment á production er ekki að deploya á sér vél og er ekki að keyra nein test en er að simulate-a ferlið.
+Eftir að deployment er lokið er hægt að fara inná http://192.168.50.4:8081/version.html, locally, og
+þar er hægt að sjá hvaða version er í gangi og komast inná Git commit history fyrir það version.
 
 #### Lærdómur
+What does this give us? Who would use the capability to track versions and why? Who would use capability to deploy any version and why?  
+Núna er alltaf hægt að sjá hvaða version er up and running. Þar er hægt að skoða allt commit history fyrir það version.
+Forritarar geta þá auðveldlega séð hvenær breytingar voru gerðar á kóðanum og í hvaða tilgangi.
+Þetta getur verið mjög þægilegt þegar forritari er til dæmis að fara að breyta einhverju falli eða bæta við feature og vill
+sjá af hverju eitthvað var gert til að passa að hann brjóti ekki eitthvað við breytingar. 
+Einnig getur verið mjög nytsamlegt að geta trackað villur sem koma upp og kannski temporary fix sem hafa verið gerð.
+Ef finnst villa í current version getur verið að villan leynist í fyrri versions líka. 
+Þá getur verið mjög gott að geta trackað hana þar til finnst hvað hún var introduced og væri þá hægt að deploy-a stable version-i
+sem kom þar á undan á meðan villan er löguð.
+Einnig getur verið að einhver client þoli ekki nýja virkni sem kemur inn og þurfi að deploya gömlu version-i í staðinn.
+
+What was wrong with having docker push in the deployment script rather than in the dockerbuild.sh script?
+Til að þurfa bara að byggja einn binary artifact er sniðugast að byggja hann strax í dockerbuild, pusha honum inn og nota
+síðan sama artifact í öllum öðrum stigum í pipeline-inu.
+
+How does the "deploy any version, anywhere" build feature work? Hint: Track GIT_COMMIT+
+Ef maður pushar inn Docker image með Git commit tag-i heldur Docker utan um artifacts með tag-inu og þar með er hægt að
+ pulla og runna hvaða gömlum artifact sem er.
