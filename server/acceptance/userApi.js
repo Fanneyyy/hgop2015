@@ -29,7 +29,7 @@ module.exports = function user(person) {
       userApi.destination = '/api/joinGame';
       return userApi;
     },
-    placeMove: function(x,y) {
+    makeMove: function(x,y) {
       cmd.userName = person;
       cmd.creatorUserName = undefined;
       cmd.command = "MakeMove";

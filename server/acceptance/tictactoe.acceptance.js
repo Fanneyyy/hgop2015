@@ -16,7 +16,6 @@ describe('TEST ENV GET /api/gameHistory', function() {
   it('should execute same test using old style', function(done) {
 
     var command = {
-      id : "1234",
       gameId : "999",
       command: "CreateGame",
       userName: "Fanney",
@@ -40,11 +39,11 @@ describe('TEST ENV GET /api/gameHistory', function() {
             res.body.should.be.instanceof(Array);
             should(res.body).eql(
               [{
-                "id": "1234",
                 "gameId": "999",
                 "event": "GameCreated",
                 "userName": "Fanney",
                 "name": "TheFirstGame",
+                "side": 'X',
                 "timeStamp": "2015-12-07T18:09:29"
               }]);
             done();
@@ -72,11 +71,11 @@ describe('TEST ENV GET /api/gameHistory', function() {
   it('Should play game until game is won', function (done) {
     given(user("Maren").createsGame("232").named("TheThirdGame"))
       .and(user("Musli").joinsGame("232"))
-      .and(user("Maren").placeMove(0,0))
-      .and(user("Musli").placeMove(2,2))
-      .and(user("Maren").placeMove(0,1))
-      .and(user("Musli").placeMove(1,2))
-      .and(user("Maren").placeMove(0,2))
+      .and(user("Maren").makeMove(0,0))
+      .and(user("Musli").makeMove(2,2))
+      .and(user("Maren").makeMove(0,1))
+      .and(user("Musli").makeMove(1,2))
+      .and(user("Maren").makeMove(0,2))
       .expect("GameWon")
       .withName("TheThirdGame")
       .byUser("Maren")
@@ -86,15 +85,15 @@ describe('TEST ENV GET /api/gameHistory', function() {
   it('Should play game until game is draw', function (done) {
     given(user("Devil").createsGame("9282").named("TheFourthGame"))
       .and(user("Angel").joinsGame("9282"))
-      .and(user("Devil").placeMove(0,0))
-      .and(user("Angel").placeMove(0,1))
-      .and(user("Devil").placeMove(0,2))
-      .and(user("Angel").placeMove(1,1))
-      .and(user("Devil").placeMove(1,0))
-      .and(user("Angel").placeMove(1,2))
-      .and(user("Devil").placeMove(2,1))
-      .and(user("Angel").placeMove(2,0))
-      .and(user("Devil").placeMove(2,2))
+      .and(user("Devil").makeMove(0,0))
+      .and(user("Angel").makeMove(0,1))
+      .and(user("Devil").makeMove(0,2))
+      .and(user("Angel").makeMove(1,1))
+      .and(user("Devil").makeMove(1,0))
+      .and(user("Angel").makeMove(1,2))
+      .and(user("Devil").makeMove(2,1))
+      .and(user("Angel").makeMove(2,0))
+      .and(user("Devil").makeMove(2,2))
       .expect("GameDraw")
       .withName("TheFourthGame")
       .isOk(done);

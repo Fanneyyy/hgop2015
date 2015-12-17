@@ -8,7 +8,6 @@ describe('GET /api/gameHistory', function () {
 
   it('should respond with JSON array with created events for game', function (done) {
     var command = {
-      id: "1234",
       gameId: "999",
       command: "CreateGame",
       userName: "Fanney",
@@ -32,11 +31,11 @@ describe('GET /api/gameHistory', function () {
             res.body.should.be.instanceof(Array);
             should(res.body).eql(
               [{
-                "id": "1234",
                 "gameId": "999",
                 "event": "GameCreated",
                 "userName": "Fanney",
                 "name": "TheFirstGame",
+                "side": "X",
                 "timeStamp": "2015-12-02T13:57:29"
               }]);
             done();
