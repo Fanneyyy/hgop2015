@@ -42,7 +42,7 @@ describe('Factory: TicTacToeState', function () {
   it('Should add moves 0,1 to game board', function () {
 
     gameState.mutate([{
-        event: 'MovePlaced',
+        event: 'MoveMade',
         userName: 'Fanney',
         name: 'TheFirstGame',
         timeStamp: '2014-12-02T11:29:29',

@@ -11,7 +11,7 @@ dist
 bin/localscripts/*
 
 # Test results
-TESTS-Firefox_42.0.0_(Mac_OS_X_10.11.0).xml
+TESTS-Firefox*
 acceptance-tests*
 server-tests*
 load-tests*
