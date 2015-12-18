@@ -289,13 +289,13 @@ Gat nánast alltaf fundið með frekar mikilli nákvæmni hvar villan var upprun
 ### Jenkins scripts:
 
 #### Commit Stage
-[Jenkins script for commit stage](./bin/jenkins_commit.sh)
+[Jenkins script for commit stage](../bin/jenkins_commit.sh)
 
 #### Acceptance Test Stage
-[Jenkins script for acceptance test stage](./bin/jenkins_deploy_test.sh)
+[Jenkins script for acceptance test stage](../bin/jenkins_deploy_test.sh)
 
 #### Capacity Test Stage
-[Jenkins script for capacity test stage](./bin/jenkins_capacity.sh)
+[Jenkins script for capacity test stage](../bin/jenkins_capacity.sh)
 
 #### Deploy to Production Stage
-[Jenkins script for deployment for production stage](./bin/jenkins_deploy_production.sh)
+[Jenkins script for deployment for production stage](../bin/jenkins_deploy_production.sh)
