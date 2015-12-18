@@ -283,3 +283,19 @@ Komið UI fyrir leikinn sem hægt er að spila. Leikmaður getur sigrað og þa�
 Búin að fikta mjög mikið í Angular kóðanum og ná fram skilningi á köllunum í gegnum application-ið.
 Mikilvægast finnst mér þó að sjá hvað öll prófin voru að hjálpa gífurlega mikið þegar ég lenti í vandræðum.
 Gat nánast alltaf fundið með frekar mikilli nákvæmni hvar villan var upprunin og gat þá sett inn log skipanir til að sjá hvað var að.
+
+## Project wrap up
+
+### Jenkins scripts:
+
+#### Commit Stage
+[Jenkins script for commit stage](./docs/jenkins_commit.sh)
+
+#### Acceptance Test Stage
+[Jenkins script for acceptance test stage](./docs/jenkins_deploy_test.sh)
+
+#### Capacity Test Stage
+[Jenkins script for capacity test stage](./docs/jenkins_capacity.sh)
+
+#### Deploy to Production Stage
+[Jenkins script for deployment for production stage](./docs/jenkins_deploy_production.sh)
