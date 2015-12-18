@@ -123,7 +123,7 @@ Byrja að forrita Unit test.
 #### Útkoma
 Get núna sett up Jenkins verkefni sem keyrir á local repo.  
 Jenkins próf keyra núna á mesta lagi 15 mínútna fresti ef breytingar hafa verið gerðar.
-Kominn listi af dæmum fyrir Unit test. [The test examples using Given-When-Then model](./docs/testExamples.md).
+Kominn listi af dæmum fyrir Unit test. [The test examples using Given-When-Then model](./testExamples.md).
 Búin að gera nokkur Unit test sem ganga vel.
 
 #### Lærdómur
@@ -134,7 +134,7 @@ Búin að kynna mér prófana möguleikana með grunt sem líta mjög vel út.
 ## Dagur 7
 
 #### Markmið
-Klára að setja upp Unit testin sem voru sett fram í [test examples](./docs/testExamples.md) 
+Klára að setja upp Unit testin sem voru sett fram í [test examples](./testExamples.md) 
 fyrir TicTacToe Command Handlerinn. Kynna mér 'q' og byrja að tengja serverinn og command handlerinn.
 
 #### Vandamál
